@@ -56,7 +56,7 @@ const sound = new SoundController();
 class RRBApp {
   constructor() {
     this.activeTestId = 'bse'; // default test
-    this.currentView = 'test'; // 'test' or 'hub'
+    this.currentView = 'hub'; // Start on Hub overview!
     this.testStates = {};
     this.timerInterval = null;
     this.solFilter = 'all';
@@ -70,7 +70,8 @@ class RRBApp {
     this.renderTabs();
     this.renderHubCards();
     this.setupEventListeners();
-    this.switchTest(this.activeTestId);
+    this.showHubView(); // Show Hub view first so candidate chooses when to start
+    this.updateTimerDisplay();
     this.startTimerLoop();
   }
 
@@ -121,9 +122,10 @@ class RRBApp {
     return MOCK_TESTS[this.activeTestId];
   }
 
-  // --- Test Switching ---
-  switchTest(testId) {
+  // --- Start Test Explicitly (Turns Timer On) ---
+  startMockTest(testId) {
     if (!MOCK_TESTS[testId]) return;
+    sound.submit();
     this.activeTestId = testId;
     const state = this.getActiveState();
     state.started = true;
@@ -138,13 +140,32 @@ class RRBApp {
     this.renderCurrentQuestion();
     this.updatePaletteAndLegend();
     this.updateTimerDisplay();
+  }
 
-    // If already submitted, open scorecard button or alert
+  // --- Test Switching ---
+  switchTest(testId) {
+    if (!MOCK_TESTS[testId]) return;
+    this.activeTestId = testId;
+    const state = this.getActiveState();
+    this.saveActiveState();
+
+    this.showTestView();
+    this.renderTabs();
+    this.populateSectionDropdown();
+    this.renderCurrentQuestion();
+    this.updatePaletteAndLegend();
+    this.updateTimerDisplay();
+
+    // Update Top Submit/Start Button
     const btnSubmit = document.getElementById('btnSubmitTop');
     if (state.submitted) {
       btnSubmit.innerHTML = '📊 View Scorecard';
       btnSubmit.className = 'btn-submit-top';
       btnSubmit.style.background = 'linear-gradient(135deg, #6366f1, #4f46e5)';
+    } else if (!state.started) {
+      btnSubmit.innerHTML = '▶️ Start Test';
+      btnSubmit.className = 'btn-submit-top';
+      btnSubmit.style.background = 'linear-gradient(135deg, #10b981, #059669)';
     } else {
       btnSubmit.innerHTML = 'Submit Test';
       btnSubmit.className = 'btn-submit-top';
@@ -160,6 +181,7 @@ class RRBApp {
     document.getElementById('btnViewHub').classList.add('active');
     document.getElementById('btnViewTest').classList.remove('active');
     this.renderHubCards();
+    this.updateTimerDisplay();
   }
 
   showTestView() {
@@ -168,6 +190,7 @@ class RRBApp {
     document.getElementById('cbtContainer').style.display = 'grid';
     document.getElementById('btnViewHub').classList.remove('active');
     document.getElementById('btnViewTest').classList.add('active');
+    this.updateTimerDisplay();
   }
 
   // --- Header Tabs Rendering ---
@@ -219,9 +242,9 @@ class RRBApp {
       if (state.submitted) {
         statusClass = 'completed';
         statusText = `Completed (${state.results ? state.results.netScore.toFixed(1) : 0} M)`;
-      } else if (attempted > 0) {
+      } else if (state.started) {
         statusClass = 'inprogress';
-        statusText = `In Progress (${attempted}/100)`;
+        statusText = `In Progress (${attempted}/100 Qs)`;
       }
 
       const card = document.createElement('div');
@@ -239,14 +262,21 @@ class RRBApp {
           <div class="meta-col"><span>Marking</span><strong>+1 / -0.33</strong></div>
         </div>
         <div class="test-card-actions">
-          <button class="btn-card-start" onclick="app.switchTest('${test.id}')">
-            ${state.submitted ? 'Review / Retake' : (attempted > 0 ? 'Resume Test' : 'Start Mock Test')}
+          <button class="btn-card-start" onclick="${state.submitted ? `app.showScorecard('${test.id}')` : (state.started ? `app.switchTest('${test.id}')` : `app.startMockTest('${test.id}')`)}">
+            ${state.submitted ? '📊 View Scorecard' : (state.started ? `▶️ Resume Test (${Math.floor(state.secondsLeft/60)}m left)` : '▶️ Start Mock Test')}
           </button>
-          ${state.submitted ? `<button class="btn-card-score" onclick="app.showScorecard('${test.id}')">Scorecard</button>` : ''}
+          ${state.submitted ? `<button class="btn-card-score" onclick="app.retakeTestFromHub('${test.id}')" title="Restart this test">🔄 Retake</button>` : ''}
         </div>
       `;
       grid.appendChild(card);
     });
+  }
+
+  retakeTestFromHub(testId) {
+    if (!confirm(`Are you sure you want to reset and retake ${MOCK_TESTS[testId].title}? All previous answers will be cleared.`)) return;
+    this.testStates[testId] = this.getInitialState(testId);
+    this.saveActiveState();
+    this.startMockTest(testId);
   }
 
   // --- Section Filter Dropdown ---
@@ -283,6 +313,25 @@ class RRBApp {
     document.getElementById('qCurrentNum').textContent = state.currentIndex + 1;
     document.getElementById('qTotalNum').textContent = testData.questions.length;
     document.getElementById('questionText').textContent = qData.q;
+
+    // Show or hide Test Start Banner
+    const startBanner = document.getElementById('testStartBanner');
+    if (!state.started && !state.submitted) {
+      if (startBanner) {
+        startBanner.style.display = 'flex';
+        startBanner.innerHTML = `
+          <div class="start-banner-info">
+            <h4>Ready to start ${testData.title}?</h4>
+            <p>100 Questions · 90 Minutes · The timer will turn ON only when you click Start Test!</p>
+          </div>
+          <button class="btn-start-banner" onclick="app.startMockTest('${this.activeTestId}')">
+            ▶️ Start Mock Test (Turn Timer On)
+          </button>
+        `;
+      }
+    } else {
+      if (startBanner) startBanner.style.display = 'none';
+    }
 
     // Render options
     const container = document.getElementById('optionsContainer');
@@ -321,6 +370,12 @@ class RRBApp {
 
   selectOption(optIdx) {
     const state = this.getActiveState();
+    if (!state.started) {
+      state.started = true;
+      const startBanner = document.getElementById('testStartBanner');
+      if (startBanner) startBanner.style.display = 'none';
+      this.updateTimerDisplay();
+    }
     state.answers[state.currentIndex] = optIdx;
     
     // If it was already marked for review, keep it answered-review
@@ -477,8 +532,10 @@ class RRBApp {
   startTimerLoop() {
     if (this.timerInterval) clearInterval(this.timerInterval);
     this.timerInterval = setInterval(() => {
+      // ONLY decrement timer when candidate is inside test view AND test has been started!
+      if (this.currentView !== 'test') return;
       const state = this.getActiveState();
-      if (!state || state.submitted) return;
+      if (!state || !state.started || state.submitted) return;
 
       if (state.secondsLeft > 0) {
         state.secondsLeft--;
@@ -497,14 +554,37 @@ class RRBApp {
     const state = this.getActiveState();
     const timerElem = document.getElementById('timerVal');
     const timerBox = document.getElementById('timerBox');
-    if (!timerElem) return;
+    if (!timerElem || !timerBox) return;
+    const timerLabel = timerBox.querySelector('.timer-label');
 
     if (state.submitted) {
       timerElem.textContent = 'COMPLETED';
+      if (timerLabel) timerLabel.textContent = 'Status';
       timerBox.classList.remove('warning');
       return;
     }
 
+    if (!state.started) {
+      const mins = Math.floor(state.secondsLeft / 60);
+      const secs = state.secondsLeft % 60;
+      timerElem.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+      if (timerLabel) timerLabel.textContent = 'Time Limit (Not Started)';
+      timerBox.classList.remove('warning');
+      return;
+    }
+
+    // When on Hub view, timer is paused
+    if (this.currentView === 'hub') {
+      const mins = Math.floor(state.secondsLeft / 60);
+      const secs = state.secondsLeft % 60;
+      timerElem.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+      if (timerLabel) timerLabel.textContent = 'Timer Paused (On Hub)';
+      timerBox.classList.remove('warning');
+      return;
+    }
+
+    // Active test in progress
+    if (timerLabel) timerLabel.textContent = 'Time Remaining';
     const mins = Math.floor(state.secondsLeft / 60);
     const secs = state.secondsLeft % 60;
     const str = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
