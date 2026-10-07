@@ -4,8 +4,7 @@
   "description": "RRB Technician Grade-I (Signal) Unified 4-in-1 CBT Mega Mock Hub",
   "scripts": {
     "dev": "npx serve -l 3000 .",
-    "start": "npx serve -l 3000 .",
-    "build": "echo 'Static build ready'"
+    "start": "npx serve -l 3000 ."
   },
   "keywords": [
     "rrb",
