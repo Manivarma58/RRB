@@ -742,11 +742,74 @@ for idx, q in enumerate(qs_gar):
     assert q['q'], f"GA&R Q{idx+1} missing question"
     assert q['exp'], f"GA&R Q{idx+1} missing explanation"
 
+# --- Construct Flagship All-In-One Full Mock Test (Exact 100 Qs Pattern) ---
+# Breakdown according to official RRB Technician Gr-I Signal CBT:
+# 1. General Awareness: 10 Qs (10 Marks)
+# 2. General Intelligence and Reasoning: 15 Qs (15 Marks)
+# 3. Basics of Computers and Applications: 20 Qs (20 Marks)
+# 4. Mathematics: 20 Qs (20 Marks)
+# 5. Basic Science and Engineering: 35 Qs (35 Marks)
+# Total = 100 Qs (100 Marks)
+
+qs_full = []
+
+# Section 1: General Awareness (10 Qs)
+for q in qs_gar[:10]:
+    item = dict(q)
+    item["section"] = "General Awareness"
+    qs_full.append(item)
+
+# Section 2: General Intelligence & Reasoning (15 Qs)
+for q in qs_gar[50:65]:
+    item = dict(q)
+    item["section"] = "General Intelligence & Reasoning"
+    qs_full.append(item)
+
+# Section 3: Basics of Computers & Applications (20 Qs)
+for q in qs_comp[:20]:
+    item = dict(q)
+    item["section"] = "Basics of Computers & Applications"
+    qs_full.append(item)
+
+# Section 4: Mathematics (20 Qs)
+for q in qs_math[:20]:
+    item = dict(q)
+    item["section"] = "Mathematics"
+    qs_full.append(item)
+
+# Section 5: Basic Science & Engineering (35 Qs)
+for q in qs_bse[:35]:
+    item = dict(q)
+    item["section"] = "Basic Science & Engineering"
+    qs_full.append(item)
+
+assert len(qs_full) == 100, f"Full Mock count is {len(qs_full)}, expected 100"
+
 mock_tests = {
+    "full_mock": {
+        "id": "full_mock",
+        "title": "All-in-One Full CBT Exam (Official Pattern)",
+        "shortTitle": "All-in-One Full Exam",
+        "icon": "🏆",
+        "badge": "Official CEN 02/2024 Pattern",
+        "description": "Tentative RRB Official CBT Pattern: GA (10 Qs) + Reasoning (15 Qs) + Computers (20 Qs) + Mathematics (20 Qs) + Basic Science & Engg (35 Qs). Total 100 Questions, 100 Marks.",
+        "durationMinutes": 90,
+        "marksPerCorrect": 1.0,
+        "negativeMarks": 0.33,
+        "isOfficialAllInOne": True,
+        "sectionBreakdown": [
+            {"name": "General Awareness", "count": 10, "marks": 10},
+            {"name": "General Intelligence & Reasoning", "count": 15, "marks": 15},
+            {"name": "Basics of Computers & Applications", "count": 20, "marks": 20},
+            {"name": "Mathematics", "count": 20, "marks": 20},
+            {"name": "Basic Science & Engineering", "count": 35, "marks": 35}
+        ],
+        "questions": qs_full
+    },
     "bse": {
         "id": "bse",
         "title": "Basic Science & Engineering",
-        "shortTitle": "BSE",
+        "shortTitle": "Basic Science & Engg",
         "icon": "🔬",
         "badge": "Pay Level-5 Core",
         "description": "Physics Fundamentals, Electricity & DC Circuits, Magnetism, EMI, Electronics & Devices, Digital & Microprocessors, Measurements.",
@@ -758,7 +821,7 @@ mock_tests = {
     "computers": {
         "id": "computers",
         "title": "Basics of Computers & Applications",
-        "shortTitle": "Computers",
+        "shortTitle": "Computers & Apps",
         "icon": "💻",
         "badge": "Technical Core",
         "description": "Architecture, Operating Systems, Networking & Internet, Storage, Data Representation, MS Office, Security & Web Technologies.",
@@ -794,11 +857,11 @@ mock_tests = {
 }
 
 # Write to js/data.js
-output_js = "// RRB Technician Grade-I (Signal) Unified 4-in-1 CBT Mock Test Dataset\n"
+output_js = "// RRB Technician Grade-I (Signal) Unified CBT Mock Test Dataset\n"
 output_js += "const MOCK_TESTS = " + json.dumps(mock_tests, indent=2, ensure_ascii=False) + ";\n"
 output_js += "if (typeof module !== 'undefined' && module.exports) { module.exports = { MOCK_TESTS }; }\n"
 
 with open(os.path.join(BASE_DIR, 'js', 'data.js'), 'w', encoding='utf-8') as f:
     f.write(output_js)
 
-print("Successfully generated js/data.js! Total tests: 4, each with 100 questions.")
+print("Successfully generated js/data.js! Total tests: 5 (including Flagship All-In-One Full Exam).")

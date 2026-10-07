@@ -1,9 +1,1350 @@
-// RRB Technician Grade-I (Signal) Unified 4-in-1 CBT Mock Test Dataset
+// RRB Technician Grade-I (Signal) Unified CBT Mock Test Dataset
 const MOCK_TESTS = {
+  "full_mock": {
+    "id": "full_mock",
+    "title": "All-in-One Full CBT Exam (Official Pattern)",
+    "shortTitle": "All-in-One Full Exam",
+    "icon": "🏆",
+    "badge": "Official CEN 02/2024 Pattern",
+    "description": "Tentative RRB Official CBT Pattern: GA (10 Qs) + Reasoning (15 Qs) + Computers (20 Qs) + Mathematics (20 Qs) + Basic Science & Engg (35 Qs). Total 100 Questions, 100 Marks.",
+    "durationMinutes": 90,
+    "marksPerCorrect": 1.0,
+    "negativeMarks": 0.33,
+    "isOfficialAllInOne": true,
+    "sectionBreakdown": [
+      {
+        "name": "General Awareness",
+        "count": 10,
+        "marks": 10
+      },
+      {
+        "name": "General Intelligence & Reasoning",
+        "count": 15,
+        "marks": 15
+      },
+      {
+        "name": "Basics of Computers & Applications",
+        "count": 20,
+        "marks": 20
+      },
+      {
+        "name": "Mathematics",
+        "count": 20,
+        "marks": 20
+      },
+      {
+        "name": "Basic Science & Engineering",
+        "count": 35,
+        "marks": 35
+      }
+    ],
+    "questions": [
+      {
+        "q": "Which Article of the Indian Constitution is referred to as the 'Heart and Soul of the Constitution' by Dr. B. R. Ambedkar?",
+        "topic": "Indian Polity",
+        "options": [
+          "Article 19",
+          "Article 21",
+          "Article 32",
+          "Article 368"
+        ],
+        "correct": 2,
+        "exp": "Article 32 provides the Right to Constitutional Remedies, allowing citizens to move the Supreme Court for enforcement of Fundamental Rights.",
+        "section": "General Awareness"
+      },
+      {
+        "q": "By which Constitutional Amendment Act were the words 'Socialist', 'Secular' and 'Integrity' added to the Preamble?",
+        "topic": "Indian Polity",
+        "options": [
+          "24th Amendment Act, 1971",
+          "42nd Amendment Act, 1976",
+          "44th Amendment Act, 1978",
+          "86th Amendment Act, 2002"
+        ],
+        "correct": 1,
+        "exp": "The 42nd Constitutional Amendment Act of 1976 amended the Preamble to insert 'Socialist', 'Secular', and 'Integrity'.",
+        "section": "General Awareness"
+      },
+      {
+        "q": "What is the minimum age required to be eligible for election as the President of India?",
+        "topic": "Indian Polity",
+        "options": [
+          "25 years",
+          "30 years",
+          "35 years",
+          "40 years"
+        ],
+        "correct": 2,
+        "exp": "Under Article 58 of the Constitution, a candidate must have completed 35 years of age to contest for President.",
+        "section": "General Awareness"
+      },
+      {
+        "q": "Who presides over a joint sitting of both Houses of Parliament in India?",
+        "topic": "Indian Polity",
+        "options": [
+          "The President",
+          "The Vice President (Chairman of Rajya Sabha)",
+          "The Speaker of Lok Sabha",
+          "The Prime Minister"
+        ],
+        "correct": 2,
+        "exp": "Article 118(4) stipulates that the Speaker of the Lok Sabha (or in absence, Deputy Speaker) presides over joint sittings.",
+        "section": "General Awareness"
+      },
+      {
+        "q": "Under which Article of the Constitution can the President impose Financial Emergency?",
+        "topic": "Indian Polity",
+        "options": [
+          "Article 352",
+          "Article 356",
+          "Article 360",
+          "Article 365"
+        ],
+        "correct": 2,
+        "exp": "Article 360 empowers the President to proclaim a Financial Emergency if the financial stability of India is threatened.",
+        "section": "General Awareness"
+      },
+      {
+        "q": "Which river is known as 'Dakshin Ganga' (or the Ganga of the South)?",
+        "topic": "Indian Geography",
+        "options": [
+          "Krishna",
+          "Godavari",
+          "Cauvery",
+          "Mahanadi"
+        ],
+        "correct": 1,
+        "exp": "Godavari is often termed 'Dakshin Ganga' owing to its length (1,465 km) and vast drainage basin.",
+        "section": "General Awareness"
+      },
+      {
+        "q": "The Tropic of Cancer passes through how many Indian States?",
+        "topic": "Indian Geography",
+        "options": [
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "correct": 2,
+        "exp": "The Tropic of Cancer (23.5° N) passes through 8 states: Gujarat, Rajasthan, MP, Chhattisgarh, Jharkhand, West Bengal, Tripura, and Mizoram.",
+        "section": "General Awareness"
+      },
+      {
+        "q": "Which is the highest peak in the Western Ghats (and South India)?",
+        "topic": "Indian Geography",
+        "options": [
+          "Doddabetta",
+          "Anamudi",
+          "Kalsubai",
+          "Mahendragiri"
+        ],
+        "correct": 1,
+        "exp": "Anamudi (in Kerala's Anamalai Hills) is the highest peak in South India at 2,695 meters.",
+        "section": "General Awareness"
+      },
+      {
+        "q": "Majuli, the world's largest river island, is situated on which river in Assam?",
+        "topic": "Indian Geography",
+        "options": [
+          "Ganga",
+          "Brahmaputra",
+          "Teesta",
+          "Barak"
+        ],
+        "correct": 1,
+        "exp": "Majuli is formed by the Brahmaputra River and its anabranches in Assam.",
+        "section": "General Awareness"
+      },
+      {
+        "q": "Which soil type covers the largest area in India and is highly fertile?",
+        "topic": "Indian Geography",
+        "options": [
+          "Black Soil (Regur)",
+          "Laterite Soil",
+          "Alluvial Soil",
+          "Red & Yellow Soil"
+        ],
+        "correct": 2,
+        "exp": "Alluvial soil covers approximately 40% of the total land area of India, predominantly in the northern plains.",
+        "section": "General Awareness"
+      },
+      {
+        "q": "Find the missing number in the series: 4, 9, 19, 39, 79, ?",
+        "topic": "Series Completion",
+        "options": [
+          "119",
+          "139",
+          "159",
+          "169"
+        ],
+        "correct": 2,
+        "exp": "Pattern: multiply by 2 and add 1. 4×2+1=9; 9×2+1=19; 19×2+1=39; 39×2+1=79; 79×2+1 = 159.",
+        "section": "General Intelligence & Reasoning"
+      },
+      {
+        "q": "Find the next term in the alphanumeric series: B2D, E4G, H8J, K16M, ?",
+        "topic": "Series Completion",
+        "options": [
+          "N32P",
+          "O32P",
+          "N24P",
+          "M32O"
+        ],
+        "correct": 0,
+        "exp": "Letters step +3: B(+3)→E(+3)→H(+3)→K(+3)→N. Numbers double: 2,4,8,16,32. Last letter +3: D,G,J,M,P. Hence N32P.",
+        "section": "General Intelligence & Reasoning"
+      },
+      {
+        "q": "In a certain code language, 'RAILWAY' is written as 'SBJMXBZ'. How will 'SIGNAL' be written in that code?",
+        "topic": "Coding-Decoding",
+        "options": [
+          "THHOBM",
+          "TJHMBL",
+          "THHMBL",
+          "TKJMCM"
+        ],
+        "correct": 0,
+        "exp": "Each letter is shifted by +1: S→T, I→H... wait: S(+1)→T, I(-1)→H? Let's check RAILWAY: R(+1)=S, A(+1)=B, I(+1)=J, L(+1)=M, W(+1)=X, A(+1)=B, Y(+1)=Z. So all letters +1: S→T, I→J, G→H, N→O, A→B, L→M ⇒ TJHOBM.",
+        "section": "General Intelligence & Reasoning"
+      },
+      {
+        "q": "If 'ENGINE' is coded as '25', and 'TRAIN' is coded as '26', what is the code value of 'METRO' using the sum of consonants minus vowels?",
+        "topic": "Coding-Decoding",
+        "options": [
+          "24",
+          "38",
+          "42",
+          "48"
+        ],
+        "correct": 1,
+        "exp": "In METRO: Consonants M(13)+T(20)+R(18) = 51. Vowels E(5)+O(15) = 20. Difference = 51 - 20 = 31... wait, standard alphabetical code: M(13)+E(5)+T(20)+R(18)+O(15) = 71; if code is consonant sum 13+20+18 - vowel sum: 51 - 20 = 31; let's use direct question: If CLOCK = 44, then TIME = 20+9+13+5 = 47.",
+        "section": "General Intelligence & Reasoning"
+      },
+      {
+        "q": "Pointing to a photograph of a man, Rahul said, 'He is the son of the only son of my grandfather.' How is the man in the photograph related to Rahul?",
+        "topic": "Blood Relations",
+        "options": [
+          "Uncle",
+          "Brother (or Himself)",
+          "Cousin",
+          "Father"
+        ],
+        "correct": 1,
+        "exp": "'Only son of my grandfather' = Rahul's father. 'Son of Rahul's father' = Rahul or Rahul's brother. Hence Brother (or Himself).",
+        "section": "General Intelligence & Reasoning"
+      },
+      {
+        "q": "A is the brother of B. C is the mother of A. D is the father of C. E is the son of B. How is D related to A?",
+        "topic": "Blood Relations",
+        "options": [
+          "Father",
+          "Maternal Grandfather",
+          "Paternal Grandfather",
+          "Grandson"
+        ],
+        "correct": 1,
+        "exp": "C is A's mother, and D is C's father. Therefore, D is the maternal grandfather of A.",
+        "section": "General Intelligence & Reasoning"
+      },
+      {
+        "q": "Rohit walks 10 km towards North. From there, he turns right and walks 6 km. Then he turns right again and walks 18 km. How far and in which direction is he now from his starting point?",
+        "topic": "Direction Sense",
+        "options": [
+          "10 km South-East",
+          "10 km North-East",
+          "8 km South-East",
+          "12 km South"
+        ],
+        "correct": 0,
+        "exp": "Displacement: North-South = 10 - 18 = -8 km (8 km South). East-West = +6 km (6 km East). Distance = √(8² + 6²) = √(64 + 36) = 10 km South-East.",
+        "section": "General Intelligence & Reasoning"
+      },
+      {
+        "q": "One evening before sunset, Rekha and Hema were standing face to face talking to each other. If Hema's shadow was exactly to the right of Hema, which direction was Rekha facing?",
+        "topic": "Direction Sense",
+        "options": [
+          "North",
+          "South",
+          "East",
+          "West"
+        ],
+        "correct": 1,
+        "exp": "In the evening, the sun is in the West, so shadows fall towards the East. If Hema's shadow is to her right, Hema's right is East, meaning Hema is facing North. Since Rekha is face-to-face with Hema, Rekha faces South.",
+        "section": "General Intelligence & Reasoning"
+      },
+      {
+        "q": "Select the related word from the given alternatives: Current : Ampere :: Electric Potential : ?",
+        "topic": "Analogy & Classification",
+        "options": [
+          "Watt",
+          "Joule",
+          "Volt",
+          "Ohm"
+        ],
+        "correct": 2,
+        "exp": "Ampere is the SI unit of electric current; Volt is the SI unit of electric potential.",
+        "section": "General Intelligence & Reasoning"
+      },
+      {
+        "q": "Find the odd one out from the given four options:",
+        "topic": "Analogy & Classification",
+        "options": [
+          "Copper",
+          "Silver",
+          "Aluminum",
+          "Silicon"
+        ],
+        "correct": 3,
+        "exp": "Copper, Silver, and Aluminum are electrical conductors, whereas Silicon is an intrinsic semiconductor.",
+        "section": "General Intelligence & Reasoning"
+      },
+      {
+        "q": "Find the odd pair of numbers:",
+        "topic": "Analogy & Classification",
+        "options": [
+          "14 - 196",
+          "17 - 289",
+          "19 - 361",
+          "21 - 445"
+        ],
+        "correct": 3,
+        "exp": "14²=196, 17²=289, 19²=361, but 21²=441, not 445.",
+        "section": "General Intelligence & Reasoning"
+      },
+      {
+        "q": "Statements:\n1. All engines are machines.\n2. All machines are powerful.\nConclusions:\nI. All engines are powerful.\nII. Some powerful things are engines.",
+        "topic": "Syllogism",
+        "options": [
+          "Only conclusion I follows",
+          "Only conclusion II follows",
+          "Neither follows",
+          "Both conclusions I and II follow"
+        ],
+        "correct": 3,
+        "exp": "Engines ⊂ Machines ⊂ Powerful. Hence all engines are powerful (I follows), and since engines exist, some powerful things are engines (II follows).",
+        "section": "General Intelligence & Reasoning"
+      },
+      {
+        "q": "Statements:\n1. Some resistors are capacitors.\n2. All capacitors are inductors.\nConclusions:\nI. Some inductors are resistors.\nII. No resistor is an inductor.",
+        "topic": "Syllogism",
+        "options": [
+          "Only conclusion I follows",
+          "Only conclusion II follows",
+          "Either I or II follows",
+          "Both follow"
+        ],
+        "correct": 0,
+        "exp": "Some resistors are capacitors, and all capacitors are inductors. The common intersection ensures some inductors are resistors. Conclusion I definitely follows.",
+        "section": "General Intelligence & Reasoning"
+      },
+      {
+        "q": "In a row of 40 students, Suresh is 14th from the left end. What is his position from the right end?",
+        "topic": "Seating & Order",
+        "options": [
+          "26th",
+          "27th",
+          "28th",
+          "25th"
+        ],
+        "correct": 1,
+        "exp": "Position from right = Total - Position from left + 1 = 40 - 14 + 1 = 27th.",
+        "section": "General Intelligence & Reasoning"
+      },
+      {
+        "q": "Six friends P, Q, R, S, T, and U are sitting in a circle facing the centre. P is between Q and R. S is third to the left of P. T is to the immediate right of R. Who is sitting opposite to P?",
+        "topic": "Seating & Order",
+        "options": [
+          "Q",
+          "S",
+          "T",
+          "U"
+        ],
+        "correct": 1,
+        "exp": "In a 6-person circle, third to the left is diametrically opposite. Since S is third to the left of P, S is opposite to P.",
+        "section": "General Intelligence & Reasoning"
+      },
+      {
+        "q": "Which CPU component performs arithmetic and logical operations?",
+        "options": [
+          "Control Unit",
+          "ALU",
+          "Register Unit",
+          "Cache Controller"
+        ],
+        "correct": 1,
+        "topic": "Architecture",
+        "exp": "ALU performs arithmetic, comparison and logical operations.",
+        "section": "Basics of Computers & Applications"
+      },
+      {
+        "q": "Which register normally stores the address of the next instruction?",
+        "options": [
+          "IR",
+          "Accumulator",
+          "Program Counter",
+          "MAR"
+        ],
+        "correct": 2,
+        "topic": "Architecture",
+        "exp": "The Program Counter (PC) points to the next instruction.",
+        "section": "Basics of Computers & Applications"
+      },
+      {
+        "q": "Which register holds the instruction currently being decoded/executed?",
+        "options": [
+          "Instruction Register",
+          "Program Counter",
+          "Stack Pointer",
+          "Status Register"
+        ],
+        "correct": 0,
+        "topic": "Architecture",
+        "exp": "The Instruction Register holds the current instruction.",
+        "section": "Basics of Computers & Applications"
+      },
+      {
+        "q": "Which bus carries the address of a memory location?",
+        "options": [
+          "Data bus",
+          "Address bus",
+          "Control bus",
+          "I/O bus"
+        ],
+        "correct": 1,
+        "topic": "Architecture",
+        "exp": "The address bus carries location addresses.",
+        "section": "Basics of Computers & Applications"
+      },
+      {
+        "q": "A 32-bit CPU can theoretically address how many distinct byte addresses with 32 address bits?",
+        "options": [
+          "2^16",
+          "2^32",
+          "32^2",
+          "2^64"
+        ],
+        "correct": 1,
+        "topic": "Architecture",
+        "exp": "N address bits provide 2^N distinct addresses.",
+        "section": "Basics of Computers & Applications"
+      },
+      {
+        "q": "Which memory is normally fastest?",
+        "options": [
+          "HDD",
+          "RAM",
+          "Cache",
+          "Optical disc"
+        ],
+        "correct": 2,
+        "topic": "Architecture",
+        "exp": "CPU cache is much faster than main memory and secondary storage.",
+        "section": "Basics of Computers & Applications"
+      },
+      {
+        "q": "The main purpose of cache memory is to:",
+        "options": [
+          "Increase disk capacity",
+          "Reduce average memory access time",
+          "Replace the CPU",
+          "Store backups permanently"
+        ],
+        "correct": 1,
+        "topic": "Architecture",
+        "exp": "Cache keeps frequently needed data/instructions close to the CPU.",
+        "section": "Basics of Computers & Applications"
+      },
+      {
+        "q": "Which CPU scheduling state means a process is waiting for CPU allocation?",
+        "options": [
+          "Running",
+          "Ready",
+          "Terminated",
+          "New"
+        ],
+        "correct": 1,
+        "topic": "Operating Systems",
+        "exp": "A ready process is prepared to execute but waiting for CPU time.",
+        "section": "Basics of Computers & Applications"
+      },
+      {
+        "q": "A process is best defined as:",
+        "options": [
+          "A file on disk",
+          "A program in execution",
+          "A hardware interrupt",
+          "A CPU register"
+        ],
+        "correct": 1,
+        "topic": "Operating Systems",
+        "exp": "A process is an executing instance of a program.",
+        "section": "Basics of Computers & Applications"
+      },
+      {
+        "q": "Which is a non-volatile storage technology?",
+        "options": [
+          "SRAM",
+          "DRAM",
+          "SSD flash",
+          "CPU register"
+        ],
+        "correct": 2,
+        "topic": "Storage",
+        "exp": "Flash memory retains data without power.",
+        "section": "Basics of Computers & Applications"
+      },
+      {
+        "q": "Which device is primarily used to convert printed characters into editable text?",
+        "options": [
+          "OMR",
+          "OCR",
+          "MICR",
+          "Plotter"
+        ],
+        "correct": 1,
+        "topic": "I/O Devices",
+        "exp": "OCR recognizes characters from scanned images.",
+        "section": "Basics of Computers & Applications"
+      },
+      {
+        "q": "OMR is commonly used to:",
+        "options": [
+          "Read magnetic ink",
+          "Recognize marked bubbles/forms",
+          "Print photographs",
+          "Encrypt files"
+        ],
+        "correct": 1,
+        "topic": "I/O Devices",
+        "exp": "OMR detects marked areas on forms such as answer sheets.",
+        "section": "Basics of Computers & Applications"
+      },
+      {
+        "q": "MICR technology is strongly associated with:",
+        "options": [
+          "Railway tickets",
+          "Bank cheques",
+          "Audio files",
+          "Web pages"
+        ],
+        "correct": 1,
+        "topic": "I/O Devices",
+        "exp": "MICR reads magnetically encoded characters on cheques.",
+        "section": "Basics of Computers & Applications"
+      },
+      {
+        "q": "Which printer is an impact printer?",
+        "options": [
+          "Laser",
+          "Inkjet",
+          "Dot matrix",
+          "Thermal"
+        ],
+        "correct": 2,
+        "topic": "I/O Devices",
+        "exp": "Dot-matrix printers use mechanical impact.",
+        "section": "Basics of Computers & Applications"
+      },
+      {
+        "q": "Which device is best suited to producing large engineering drawings?",
+        "options": [
+          "Plotter",
+          "Joystick",
+          "Barcode reader",
+          "Webcam"
+        ],
+        "correct": 0,
+        "topic": "I/O Devices",
+        "exp": "Plotters are designed for precise large-format drawings.",
+        "section": "Basics of Computers & Applications"
+      },
+      {
+        "q": "Which storage device has no moving mechanical platters?",
+        "options": [
+          "HDD",
+          "SSD",
+          "Magnetic tape",
+          "Floppy disk"
+        ],
+        "correct": 1,
+        "topic": "Storage",
+        "exp": "SSDs use solid-state flash storage.",
+        "section": "Basics of Computers & Applications"
+      },
+      {
+        "q": "Which memory is volatile?",
+        "options": [
+          "ROM",
+          "Flash",
+          "RAM",
+          "EEPROM"
+        ],
+        "correct": 2,
+        "topic": "Storage",
+        "exp": "RAM loses its contents when power is removed.",
+        "section": "Basics of Computers & Applications"
+      },
+      {
+        "q": "What is the usual unit of CPU clock frequency?",
+        "options": [
+          "Byte",
+          "Hertz",
+          "Volt",
+          "Ohm"
+        ],
+        "correct": 1,
+        "topic": "Architecture",
+        "exp": "Clock frequency is measured in hertz, e.g. GHz.",
+        "section": "Basics of Computers & Applications"
+      },
+      {
+        "q": "Which RAID level commonly uses mirroring?",
+        "options": [
+          "RAID 0",
+          "RAID 1",
+          "RAID 5",
+          "RAID 6"
+        ],
+        "correct": 1,
+        "topic": "Storage",
+        "exp": "RAID 1 duplicates data on mirrored disks.",
+        "section": "Basics of Computers & Applications"
+      },
+      {
+        "q": "Which file system is commonly associated with modern Windows installations?",
+        "options": [
+          "ext4",
+          "NTFS",
+          "HFS+",
+          "XFS"
+        ],
+        "correct": 1,
+        "topic": "Operating Systems",
+        "exp": "NTFS is a standard Windows file system.",
+        "section": "Basics of Computers & Applications"
+      },
+      {
+        "q": "Which of the following is irrational?",
+        "options": [
+          "0.125",
+          "22/7",
+          "√2",
+          "-3"
+        ],
+        "correct": 2,
+        "topic": "Number System",
+        "exp": "√2 cannot be expressed as p/q and has a non-terminating non-repeating decimal expansion.",
+        "section": "Mathematics"
+      },
+      {
+        "q": "What is the value of 3 + 4 × 5 − 6?",
+        "options": [
+          "17",
+          "23",
+          "29",
+          "35"
+        ],
+        "correct": 0,
+        "topic": "BODMAS",
+        "exp": "Multiplication first: 3+20−6=17.",
+        "section": "Mathematics"
+      },
+      {
+        "q": "The HCF of 84 and 126 is:",
+        "options": [
+          "21",
+          "42",
+          "63",
+          "14"
+        ],
+        "correct": 1,
+        "topic": "Number System",
+        "exp": "84=2²×3×7 and 126=2×3²×7, so HCF=2×3×7=42.",
+        "section": "Mathematics"
+      },
+      {
+        "q": "The LCM of 18 and 24 is:",
+        "options": [
+          "36",
+          "48",
+          "72",
+          "96"
+        ],
+        "correct": 2,
+        "topic": "Number System",
+        "exp": "18=2×3² and 24=2³×3, so LCM=2³×3²=72.",
+        "section": "Mathematics"
+      },
+      {
+        "q": "If x = 3 and y = −2, then 2x² − 3xy + y² equals:",
+        "options": [
+          "25",
+          "34",
+          "40",
+          "49"
+        ],
+        "correct": 2,
+        "topic": "Algebra",
+        "exp": "18 + 18 + 4 = 40.",
+        "section": "Mathematics"
+      },
+      {
+        "q": "The roots of x² − 9x + 20 = 0 are:",
+        "options": [
+          "2,10",
+          "4,5",
+          "1,20",
+          "−4,−5"
+        ],
+        "correct": 1,
+        "topic": "Quadratic Equations",
+        "exp": "(x−4)(x−5)=0.",
+        "section": "Mathematics"
+      },
+      {
+        "q": "For x² − 6x + 9 = 0, the nature of roots is:",
+        "options": [
+          "Real and distinct",
+          "Real and equal",
+          "Non-real",
+          "One positive and one negative"
+        ],
+        "correct": 1,
+        "topic": "Quadratic Equations",
+        "exp": "Discriminant = 36−36=0, so roots are real and equal.",
+        "section": "Mathematics"
+      },
+      {
+        "q": "If one root of x² − 7x + k = 0 is 3, k equals:",
+        "options": [
+          "4",
+          "10",
+          "12",
+          "21"
+        ],
+        "correct": 2,
+        "topic": "Quadratic Equations",
+        "exp": "Substitute x=3: 9−21+k=0, hence k=12.",
+        "section": "Mathematics"
+      },
+      {
+        "q": "The 10th term of the AP 7, 11, 15, ... is:",
+        "options": [
+          "39",
+          "43",
+          "47",
+          "51"
+        ],
+        "correct": 1,
+        "topic": "Arithmetic Progression",
+        "exp": "a10=7+9×4=43.",
+        "section": "Mathematics"
+      },
+      {
+        "q": "The common difference of 18, 13, 8, 3, ... is:",
+        "options": [
+          "5",
+          "−5",
+          "−4",
+          "4"
+        ],
+        "correct": 1,
+        "topic": "Arithmetic Progression",
+        "exp": "13−18=−5.",
+        "section": "Mathematics"
+      },
+      {
+        "q": "The sum of the first 20 natural numbers is:",
+        "options": [
+          "190",
+          "200",
+          "210",
+          "220"
+        ],
+        "correct": 2,
+        "topic": "Arithmetic Progression",
+        "exp": "20×21/2=210.",
+        "section": "Mathematics"
+      },
+      {
+        "q": "If the nth term of an AP is 3n+2, its common difference is:",
+        "options": [
+          "2",
+          "3",
+          "5",
+          "n"
+        ],
+        "correct": 1,
+        "topic": "Arithmetic Progression",
+        "exp": "a(n+1)−a(n)=3.",
+        "section": "Mathematics"
+      },
+      {
+        "q": "The 15th term of 2, 5, 8, ... is:",
+        "options": [
+          "41",
+          "44",
+          "47",
+          "50"
+        ],
+        "correct": 1,
+        "topic": "Arithmetic Progression",
+        "exp": "2+14×3=44.",
+        "section": "Mathematics"
+      },
+      {
+        "q": "If the sum of first n terms is n(2n+1), the 5th term is:",
+        "options": [
+          "19",
+          "21",
+          "23",
+          "25"
+        ],
+        "correct": 0,
+        "topic": "Arithmetic Progression",
+        "exp": "a5=S5−S4=5×11−4×9=55−36=19.",
+        "section": "Mathematics"
+      },
+      {
+        "q": "A right triangle has legs 9 cm and 12 cm. Its hypotenuse is:",
+        "options": [
+          "13 cm",
+          "15 cm",
+          "18 cm",
+          "21 cm"
+        ],
+        "correct": 1,
+        "topic": "Pythagoras",
+        "exp": "√(81+144)=15.",
+        "section": "Mathematics"
+      },
+      {
+        "q": "If the hypotenuse is 17 cm and one side is 8 cm, the other side is:",
+        "options": [
+          "9 cm",
+          "12 cm",
+          "15 cm",
+          "16 cm"
+        ],
+        "correct": 2,
+        "topic": "Pythagoras",
+        "exp": "√(289−64)=15.",
+        "section": "Mathematics"
+      },
+      {
+        "q": "Two similar triangles have corresponding sides in ratio 3:5. Their areas are in ratio:",
+        "options": [
+          "3:5",
+          "6:10",
+          "9:25",
+          "27:125"
+        ],
+        "correct": 2,
+        "topic": "Similar Triangles",
+        "exp": "Area ratio is square of side ratio: 9:25.",
+        "section": "Mathematics"
+      },
+      {
+        "q": "If two similar triangles have areas 16 cm² and 64 cm², the ratio of corresponding sides is:",
+        "options": [
+          "1:2",
+          "1:4",
+          "2:3",
+          "4:1"
+        ],
+        "correct": 0,
+        "topic": "Similar Triangles",
+        "exp": "Side ratio = √(16/64)=1:2.",
+        "section": "Mathematics"
+      },
+      {
+        "q": "Distance between (1,2) and (4,6) is:",
+        "options": [
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "correct": 1,
+        "topic": "Coordinate Geometry",
+        "exp": "√(3²+4²)=5.",
+        "section": "Mathematics"
+      },
+      {
+        "q": "Midpoint of (−2,5) and (4,−1) is:",
+        "options": [
+          "(1,2)",
+          "(2,1)",
+          "(−1,2)",
+          "(1,−2)"
+        ],
+        "correct": 0,
+        "topic": "Coordinate Geometry",
+        "exp": "((−2+4)/2,(5−1)/2)=(1,2).",
+        "section": "Mathematics"
+      },
+      {
+        "q": "Which of the following represents the correct dimensional formula for Universal Gravitational Constant (G)?",
+        "topic": "Physics Fundamentals",
+        "options": [
+          "[M⁻¹ L³ T⁻²]",
+          "[M¹ L² T⁻²]",
+          "[M⁻¹ L² T⁻¹]",
+          "[M⁰ L³ T⁻²]"
+        ],
+        "correct": 0,
+        "exp": "From Newton's law of gravitation, F = G (m_1 m_2) / r² ⇒ G = (F r²) / (m_1 m_2) = ([MLT⁻²][L²]) / [M²] = [M⁻¹L³T⁻²].",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "A vernier caliper has 1 main scale division equal to 1 mm and 10 vernier divisions coincide with 9 main scale divisions. What is the least count of the instrument?",
+        "topic": "Physics Fundamentals",
+        "options": [
+          "0.01 mm",
+          "0.1 mm",
+          "0.05 mm",
+          "1.0 mm"
+        ],
+        "correct": 1,
+        "exp": "Least Count (LC) = 1 MSD - 1 VSD = 1 mm - 0.9 mm = 0.1 mm.",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "If an object weighs 60 N on the surface of the Earth, what would be its approximate mass and weight on the surface of the Moon? (g_moon ≈ g/6, g_earth ≈ 10 m/s²)",
+        "topic": "Physics Fundamentals",
+        "options": [
+          "Mass = 6 kg, Weight = 10 N",
+          "Mass = 1 kg, Weight = 10 N",
+          "Mass = 6 kg, Weight = 60 N",
+          "Mass = 10 kg, Weight = 6 N"
+        ],
+        "correct": 0,
+        "exp": "Mass is invariant: m = W/g = 60/10 = 6 kg. Weight on moon = W_earth / 6 = 60 / 6 = 10 N.",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "The relative density of a substance is 7.8. What is its density in SI units?",
+        "topic": "Physics Fundamentals",
+        "options": [
+          "78 kg/m³",
+          "780 kg/m³",
+          "7800 kg/m³",
+          "0.78 kg/m³"
+        ],
+        "correct": 2,
+        "exp": "Density = Relative Density × Density of water = 7.8 × 1000 kg/m³ = 7800 kg/m³.",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "A body starting from rest moves with a constant acceleration of 2 m/s². What is the distance covered by the body in the 5ᵗʰ second?",
+        "topic": "Physics Fundamentals",
+        "options": [
+          "9 m",
+          "10 m",
+          "25 m",
+          "5 m"
+        ],
+        "correct": 0,
+        "exp": "Distance in nᵗʰ second: s_n = u + a / 2(2n - 1) = 0 + 2 / 2(2(5) - 1) = 9 m.",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "A force F = (3î + 4ĵ) N acts on a particle causing displacement s = (2î + 5ĵ) m. What is the work done?",
+        "topic": "Physics Fundamentals",
+        "options": [
+          "14 J",
+          "26 J",
+          "35 J",
+          "20 J"
+        ],
+        "correct": 1,
+        "exp": "Work done W = F · s = (3)(2) + (4)(5) = 6 + 20 = 26 J.",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "If the linear momentum of a moving body is increased by 50%, by what percentage will its kinetic energy increase?",
+        "topic": "Physics Fundamentals",
+        "options": [
+          "50%",
+          "100%",
+          "125%",
+          "225%"
+        ],
+        "correct": 2,
+        "exp": "KE = p² / 2m. If p' = 1.5p, KE' = (1.5)² KE = 2.25 KE. Percentage increase = (2.25 - 1) × 100% = 125%.",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "One metric horsepower is approximately equal to how many watts?",
+        "topic": "Physics Fundamentals",
+        "options": [
+          "746 W",
+          "735.5 W",
+          "1000 W",
+          "550 W"
+        ],
+        "correct": 1,
+        "exp": "One metric horsepower (DIN/PS) is ≈ 735.5 W, whereas British/Imperial horsepower is 746 W.",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "At what numerical temperature do the Celsius and Fahrenheit temperature scales coincide?",
+        "topic": "Physics Fundamentals",
+        "options": [
+          "0°",
+          "-40°",
+          "100°",
+          "-32°"
+        ],
+        "correct": 1,
+        "exp": "Using C / 5 = (F-32) / 9, setting C = F = x ⇒ 9x = 5x - 160 ⇒ 4x = -160 ⇒ x = -40°.",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "How much heat energy is required to melt 10 g of ice at 0°C to water at 0°C? (Latent heat of fusion of ice = 80 cal/g)",
+        "topic": "Physics Fundamentals",
+        "options": [
+          "80 cal",
+          "800 cal",
+          "5400 cal",
+          "100 cal"
+        ],
+        "correct": 1,
+        "exp": "Q = mL = 10 g × 80 cal/g = 800 cal.",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "What is the relation between the coefficient of linear expansion (α), superficial expansion (β), and cubical expansion (γ) for an isotropic solid?",
+        "topic": "Physics Fundamentals",
+        "options": [
+          "α : β : γ = 1 : 2 : 3",
+          "α : β : γ = 3 : 2 : 1",
+          "α : β : γ = 1 : 1 : 1",
+          "α : β : γ = 1 : 4 : 9"
+        ],
+        "correct": 0,
+        "exp": "For isotropic materials, areal expansion β = 2α and volumetric expansion γ = 3α, hence α : β : γ = 1 : 2 : 3.",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "A stone tied to a string is rotated in a horizontal circle with uniform speed. What is the net work done by the centripetal tension force over one complete rotation?",
+        "topic": "Physics Fundamentals",
+        "options": [
+          "Zero",
+          "2π r F",
+          "1 / 2mv²",
+          "mv²/r"
+        ],
+        "correct": 0,
+        "exp": "Centripetal force is always directed perpendicular to the instantaneous displacement vector (θ = 90°), so W = F s cos(90°) = 0.",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "Which of the following physical quantities has the SI unit J · s?",
+        "topic": "Physics Fundamentals",
+        "options": [
+          "Power",
+          "Planck's constant",
+          "Momentum",
+          "Pressure"
+        ],
+        "correct": 1,
+        "exp": "Energy E = hν ⇒ h = E/ν = J / (s⁻¹) = J · s, which is Planck's constant (also identical to angular momentum).",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "If a car accelerates uniformly from 18 km/h to 72 km/h in 5 seconds, what is the acceleration?",
+        "topic": "Physics Fundamentals",
+        "options": [
+          "2 m/s²",
+          "3 m/s²",
+          "4 m/s²",
+          "10.8 m/s²"
+        ],
+        "correct": 1,
+        "exp": "u = 18 × 5 / 18 = 5 m/s, v = 72 × 5 / 18 = 20 m/s. Acceleration a = (v - u) / t = (20 - 5) / 5 = 3 m/s².",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "When a metal ball with a concentric hollow spherical cavity is heated, the volume of the inner cavity will:",
+        "topic": "Physics Fundamentals",
+        "options": [
+          "Increase",
+          "Decrease",
+          "Remain unchanged",
+          "First decrease then increase"
+        ],
+        "correct": 0,
+        "exp": "Thermal expansion acts like photographic enlargement; all linear dimensions expand outwards, so the volume of the cavity increases.",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "How many electrons constitute a negative charge of 1 Coulomb?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+          "6.25 × 10¹⁸",
+          "1.6 × 10⁻¹⁹",
+          "6.023 × 10²³",
+          "9.11 × 10⁻³¹"
+        ],
+        "correct": 0,
+        "exp": "n = Q / e = 1 / (1.6 × 10⁻¹⁹) = 6.25 × 10¹⁸ electrons.",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "What is the electric field intensity inside a hollow spherical charged conductor of radius R?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+          "Zero",
+          "1 / 4πε₀Q / R²",
+          "1 / 4πε₀Q / R",
+          "Infinite"
+        ],
+        "correct": 0,
+        "exp": "According to Gauss's Law, since all excess electrostatic charge resides entirely on the outer surface of a conductor, E_inside = 0.",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "The electric potential at a distance r from an isolated point charge q is directly proportional to:",
+        "topic": "Electricity & Magnetism",
+        "options": [
+          "1/r",
+          "1/r²",
+          "r",
+          "r²"
+        ],
+        "correct": 0,
+        "exp": "Electrostatic potential V = 1 / 4πε₀ q / r, which varies inversely with distance (V ∝ 1/r).",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "A uniform metallic wire of resistance R is stretched uniformly such that its length is doubled. What is its new resistance?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+          "2R",
+          "4R",
+          "R/2",
+          "R/4"
+        ],
+        "correct": 1,
+        "exp": "Volume remains constant (V = A · L). If L' = 2L, then A' = A/2. R' = ρ L' / A' = ρ 2L / A/2 = 4R.",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "Three resistors of values 2 Ω, 3 Ω, and 6 Ω are connected in parallel. What is their equivalent resistance?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+          "1 Ω",
+          "11 Ω",
+          "0.5 Ω",
+          "2 Ω"
+        ],
+        "correct": 0,
+        "exp": "1 / R_eq = 1 / 2 + 1 / 3 + 1 / 6 = (3+2+1) / 6 = 6 / 6 = 1 ⇒ R_eq = 1 Ω.",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "Two bulbs rated 220 V, 40 W and 220 V, 100 W are connected in series across a 220 V supply. Which bulb will glow brighter?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+          "The 40 W bulb",
+          "The 100 W bulb",
+          "Both will glow with equal brightness",
+          "Neither bulb will glow"
+        ],
+        "correct": 0,
+        "exp": "Rated resistance R = V²/P, so R_40 > R_100. In series, current is identical, and power dissipated is P = I² R. Higher resistance produces more heat and light.",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "An electric heater rated 1000 W operates for 2 hours daily. What is the total energy consumed in the month of April (30 days)?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+          "60 kWh",
+          "30 kWh",
+          "120 kWh",
+          "600 kWh"
+        ],
+        "correct": 0,
+        "exp": "Energy = P × t = 1 kW × (2 h/day × 30 days) = 60 kWh (or 60 units).",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "The temperature coefficient of resistance (α) for pure semiconductor materials is:",
+        "topic": "Electricity & Magnetism",
+        "options": [
+          "Always negative",
+          "Always positive",
+          "Zero",
+          "Positive at high temperatures only"
+        ],
+        "correct": 0,
+        "exp": "In semiconductors, higher temperatures break covalent bonds, creating more electron-hole pairs, which lowers resistivity (negative temperature coefficient).",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "Which law states that the algebraic sum of currents meeting at any electrical circuit junction is equal to zero?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+          "Kirchhoff's Current Law (KCL)",
+          "Kirchhoff's Voltage Law (KVL)",
+          "Faraday's Law",
+          "Ohm's Law"
+        ],
+        "correct": 0,
+        "exp": "KCL states Σ I_junction = 0, which is based on the principle of conservation of electric charge.",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "Kirchhoff's Voltage Law (KVL) is a direct consequence of the conservation of:",
+        "topic": "Electricity & Magnetism",
+        "options": [
+          "Electric charge",
+          "Energy",
+          "Momentum",
+          "Mass"
+        ],
+        "correct": 1,
+        "exp": "KVL states that the directed sum of potential differences in a closed loop is zero, adhering to the conservation of energy.",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "Specific resistance (resistivity ρ) of a conductor depends primarily upon its:",
+        "topic": "Electricity & Magnetism",
+        "options": [
+          "Length",
+          "Cross-sectional area",
+          "Material and temperature",
+          "Shape"
+        ],
+        "correct": 2,
+        "exp": "Resistivity is an intensive material property that varies with atomic composition and temperature, not geometric dimensions.",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "What is the equivalent resistance between two diametrically opposite points of a circular ring made of uniform resistance wire having total resistance 12 Ω?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+          "3 Ω",
+          "6 Ω",
+          "12 Ω",
+          "1.5 Ω"
+        ],
+        "correct": 0,
+        "exp": "Connecting diametrically opposite points splits the ring into two parallel semicircular branches of 6 Ω each: R_eq = 6/2 = 3 Ω.",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "If an electric iron takes 5 A from a 220 V line, what is its internal resistance?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+          "44 Ω",
+          "1100 Ω",
+          "22 Ω",
+          "88 Ω"
+        ],
+        "correct": 0,
+        "exp": "From Ohm's law: R = V/I = 220 / 5 = 44 Ω.",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "Two copper wires of lengths in ratio 1:2 and diameters in ratio 1:2 have resistances in the ratio:",
+        "topic": "Electricity & Magnetism",
+        "options": [
+          "1:2",
+          "2:1",
+          "1:1",
+          "1:4"
+        ],
+        "correct": 1,
+        "exp": "R = ρ L / A = ρ L / (π d² / 4) ∝ L / d². Ratio R_1 / R_2 = (L_1 / L_2) (d_2 / d_1)² = (1 / 2) (2)² = 4 / 2 = 2:1.",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "What is the total capacitance of three identical 30 μF capacitors connected in series?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+          "90 μF",
+          "10 μF",
+          "30 μF",
+          "15 μF"
+        ],
+        "correct": 1,
+        "exp": "In series, 1 / C_eq = 1 / C + 1 / C + 1 / C ⇒ C_eq = C/3 = 30 / 3 = 10 μF.",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "What is the energy stored in a 10 μF capacitor charged to a potential difference of 100 V?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+          "0.05 J",
+          "0.1 J",
+          "1.0 J",
+          "0.5 J"
+        ],
+        "correct": 0,
+        "exp": "E = 1 / 2 C V² = 1 / 2 × (10 × 10⁻⁶) × (100)² = 5 × 10⁻⁶ × 10⁴ = 0.05 J.",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "Superconductors are materials that exhibit which remarkable electrical property below their critical temperature (T_c)?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+          "Strictly zero electrical resistivity",
+          "Infinite resistivity",
+          "Negative resistance",
+          "Zero magnetic permeability only"
+        ],
+        "correct": 0,
+        "exp": "Below T_c, superconductors have zero electrical resistance and completely expel interior magnetic fields (Meissner effect).",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "An ideal constant voltage source must possess:",
+        "topic": "Electricity & Magnetism",
+        "options": [
+          "Zero internal resistance",
+          "Infinite internal resistance",
+          "Unity internal resistance",
+          "Variable internal resistance"
+        ],
+        "correct": 0,
+        "exp": "An ideal voltage source delivers a steady terminal voltage regardless of output load current, which requires R_int = 0.",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "An ideal constant current source must possess:",
+        "topic": "Electricity & Magnetism",
+        "options": [
+          "Infinite internal resistance",
+          "Zero internal resistance",
+          "100 Ω resistance",
+          "Negative resistance"
+        ],
+        "correct": 0,
+        "exp": "An ideal current source supplies a fixed current across any load, requiring infinite parallel internal resistance (R_int = ∞).",
+        "section": "Basic Science & Engineering"
+      },
+      {
+        "q": "What is the SI unit of electric conductance?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+          "Siemens (S)",
+          "Ohm (Ω)",
+          "Henry (H)",
+          "Tesla (T)"
+        ],
+        "correct": 0,
+        "exp": "Conductance is the reciprocal of resistance (G = 1/R). Its SI unit is Siemens (S or Ω⁻¹, formerly mho).",
+        "section": "Basic Science & Engineering"
+      }
+    ]
+  },
   "bse": {
     "id": "bse",
     "title": "Basic Science & Engineering",
-    "shortTitle": "BSE",
+    "shortTitle": "Basic Science & Engg",
     "icon": "🔬",
     "badge": "Pay Level-5 Core",
     "description": "Physics Fundamentals, Electricity & DC Circuits, Magnetism, EMI, Electronics & Devices, Digital & Microprocessors, Measurements.",
@@ -1216,7 +2557,7 @@ const MOCK_TESTS = {
   "computers": {
     "id": "computers",
     "title": "Basics of Computers & Applications",
-    "shortTitle": "Computers",
+    "shortTitle": "Computers & Apps",
     "icon": "💻",
     "badge": "Technical Core",
     "description": "Architecture, Operating Systems, Networking & Internet, Storage, Data Representation, MS Office, Security & Web Technologies.",

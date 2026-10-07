@@ -30,7 +30,22 @@ RRB/
 
 ---
 
-## 🎯 4-in-1 Mock Test Coverage (400 Questions Total)
+## 🏆 Official All-in-One Full Mock Test (Exact CBT Pattern)
+
+Matches the official RRB Technician Gr-I Signal notification break-up:
+
+| Subject / Section | Questions | Marks | Official Weightage |
+| :--- | :---: | :---: | :--- |
+| **1. General Awareness** | 10 | 10 | Static GK, Current Affairs, Railways GK, Polity, Geography |
+| **2. General Intelligence & Reasoning** | 15 | 15 | Syllogisms, Series, Coding-Decoding, Blood Relations, Direction |
+| **3. Basics of Computers & Applications** | 20 | 20 | Computer Architecture, OS, Networking, MS Office, Security |
+| **4. Mathematics** | 20 | 20 | Algebra, Quadratics, AP, Trigonometry, Coordinate, Statistics |
+| **5. Basic Science and Engineering** | 35 | 35 | Physics Fundamentals, DC Circuits, EMI, Electronics, Transducers |
+| **TOTAL** | **100 Qs** | **100 Marks** | **90 Minutes Duration (+1.0 / -0.33 Marking)** |
+
+---
+
+## 🎯 Additional Subject-Wise Special Mocks (100 Qs Each)
 
 | Subject / Section | Questions | Duration | Marks (+1 / -0.33) | Syllabus Areas Covered |
 | :--- | :---: | :---: | :---: | :--- |

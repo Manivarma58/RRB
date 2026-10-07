@@ -55,7 +55,7 @@ const sound = new SoundController();
 // --- Main Application Controller ---
 class RRBApp {
   constructor() {
-    this.activeTestId = 'bse'; // default test
+    this.activeTestId = 'full_mock'; // Default to Flagship All-in-One Full Exam!
     this.currentView = 'hub'; // Start on Hub overview!
     this.testStates = {};
     this.timerInterval = null;
@@ -283,11 +283,23 @@ class RRBApp {
   populateSectionDropdown() {
     const select = document.getElementById('sectionFilterSelect');
     if (!select) return;
-    select.innerHTML = '<option value="-1">All Topics (1 - 100)</option>';
+    select.innerHTML = '<option value="-1">All Sections (1 - 100)</option>';
 
     const testData = this.getActiveData();
-    const topicsMap = new Map();
 
+    if (testData.sectionBreakdown) {
+      let startIndex = 0;
+      testData.sectionBreakdown.forEach(sec => {
+        const opt = document.createElement('option');
+        opt.value = startIndex;
+        opt.textContent = `${sec.name} (Q${startIndex + 1} - Q${startIndex + sec.count} · ${sec.count} Qs)`;
+        select.appendChild(opt);
+        startIndex += sec.count;
+      });
+      return;
+    }
+
+    const topicsMap = new Map();
     testData.questions.forEach((q, idx) => {
       if (!topicsMap.has(q.topic)) {
         topicsMap.set(q.topic, idx);
@@ -309,7 +321,8 @@ class RRBApp {
     const qData = testData.questions[state.currentIndex];
 
     // Meta elements
-    document.getElementById('qTopicBadge').textContent = qData.topic || testData.title;
+    const sectionHtml = qData.section ? `<span class="badge-section">${qData.section}</span> ` : '';
+    document.getElementById('qTopicBadge').innerHTML = `${sectionHtml}${qData.topic || testData.title}`;
     document.getElementById('qCurrentNum').textContent = state.currentIndex + 1;
     document.getElementById('qTotalNum').textContent = testData.questions.length;
     document.getElementById('questionText').textContent = qData.q;
@@ -653,7 +666,7 @@ class RRBApp {
 
     testData.questions.forEach((q, idx) => {
       const userAns = state.answers[idx];
-      const topic = q.topic || 'General';
+      const topic = (testData.isOfficialAllInOne && q.section) ? q.section : (q.topic || 'General');
 
       if (!topicStats[topic]) {
         topicStats[topic] = { total: 0, attempted: 0, correct: 0, marks: 0 };
