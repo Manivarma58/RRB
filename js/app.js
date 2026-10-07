@@ -817,8 +817,64 @@ class RRBApp {
     });
   }
 
-  restartActiveTest() {
-    if (!confirm('Are you sure you want to restart this test? All answers and scores for this subject will be reset.')) return;
+  generateDynamicAllInOneTest() {
+    if (typeof QUESTION_POOLS === 'undefined') {
+      alert('Question pools loading...');
+      return;
+    }
+
+    const sample = (arr, n) => {
+      const copy = [...arr];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy.slice(0, n);
+    };
+
+    const ga = sample(QUESTION_POOLS.ga, 10).map(q => ({ ...q, section: "General Awareness" }));
+    const reasoning = sample(QUESTION_POOLS.reasoning, 15).map(q => ({ ...q, section: "General Intelligence & Reasoning" }));
+    const comp = sample(QUESTION_POOLS.computers, 20).map(q => ({ ...q, section: "Basics of Computers & Applications" }));
+    const math = sample(QUESTION_POOLS.mathematics, 20).map(q => ({ ...q, section: "Mathematics" }));
+    const bse = sample(QUESTION_POOLS.bse, 35).map(q => ({ ...q, section: "Basic Science & Engineering" }));
+
+    const randomQs = [...ga, ...reasoning, ...comp, ...math, ...bse];
+    const paperNum = Math.floor(100 + Math.random() * 900);
+    const dynId = `full_mock_dynamic_${Date.now()}`;
+
+    MOCK_TESTS[dynId] = {
+      id: dynId,
+      title: `All-in-One Full CBT Exam (Random Paper #${paperNum})`,
+      shortTitle: `Random #${paperNum}`,
+      icon: '🎲',
+      badge: 'Fresh Random Paper',
+      description: 'Dynamically generated fresh 100 questions from our 450+ question master pool: 10 GA + 15 Reasoning + 20 Computers + 20 Maths + 35 BSE.',
+      durationMinutes: 90,
+      marksPerCorrect: 1.0,
+      negativeMarks: 0.33,
+      isOfficialAllInOne: true,
+      sectionBreakdown: [
+        { name: "General Awareness", count: 10, marks: 10 },
+        { name: "General Intelligence & Reasoning", count: 15, marks: 15 },
+        { name: "Basics of Computers & Applications", count: 20, marks: 20 },
+        { name: "Mathematics", count: 20, marks: 20 },
+        { name: "Basic Science & Engineering", count: 35, marks: 35 }
+      ],
+      questions: randomQs
+    };
+
+    this.testStates[dynId] = this.getInitialState(dynId);
+    this.closeScorecard();
+    this.startMockTest(dynId);
+  }
+
+  restartActiveTest(useFreshQuestions = false) {
+    if (useFreshQuestions) {
+      this.closeScorecard();
+      this.generateDynamicAllInOneTest();
+      return;
+    }
+    if (!confirm('Are you sure you want to restart this test? All answers and scores for this attempt will be reset.')) return;
     this.testStates[this.activeTestId] = this.getInitialState(this.activeTestId);
     this.saveActiveState();
     this.closeScorecard();

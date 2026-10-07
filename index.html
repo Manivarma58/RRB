@@ -143,12 +143,17 @@
     <div class="hub-view-container" id="hubViewContainer" style="display: none;">
       <section class="hub-hero">
         <div class="hero-text">
-          <h2>RRB Technician Grade-I (Signal) 4-in-1 CBT Portal</h2>
-          <p>Complete all four specialized 100-question mock tests covering the full syllabus according to CEN 02/2024. Switch between subjects seamlessly, track independent scores, and review detailed step-by-step explanations.</p>
+          <h2>RRB Technician Grade-I (Signal) Official CBT Mega Hub</h2>
+          <p>Official 100-Question Exam Pattern: GA (10 Qs) + Reasoning (15 Qs) + Computers (20 Qs) + Maths (20 Qs) + BSE (35 Qs). Practice with distinct curated sets (Set 1, Set 2, Set 3) or generate completely fresh random 100-question papers from our 450+ question master pool!</p>
           <div class="hero-stats-row">
-            <div class="hero-stat-pill">📚 4 Mock Tests (400 Total Qs)</div>
-            <div class="hero-stat-pill">⏱ 90 Mins Per Test</div>
-            <div class="hero-stat-pill">🎯 Official Marking (+1 / -0.33)</div>
+            <div class="hero-stat-pill">🏆 Official Pattern (100 Qs)</div>
+            <div class="hero-stat-pill">🎲 450+ Master Question Reservoir</div>
+            <div class="hero-stat-pill">⏱ 90 Mins (+1.0 / -0.33)</div>
+          </div>
+          <div style="margin-top: 16px; display: flex; gap: 10px; flex-wrap: wrap;">
+            <button class="btn-start-banner" onclick="app.generateDynamicAllInOneTest()">
+              🎲 Generate Brand-New 100Q Exam Paper
+            </button>
           </div>
         </div>
       </section>
@@ -283,8 +288,9 @@
       </div>
 
       <div class="modal-footer">
-        <div style="display:flex;gap:8px;">
-          <button class="btn-action btn-prev" onclick="app.restartActiveTest()">🔄 Retake Test</button>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button class="btn-action btn-prev" onclick="app.restartActiveTest(false)">🔄 Retake (Same Questions)</button>
+          <button class="btn-action btn-review" onclick="app.restartActiveTest(true)">🎲 Retake with NEW Questions</button>
           <button class="btn-action btn-prev" onclick="app.printScorecard()">🖨️ Print / Save PDF</button>
         </div>
         <button class="btn-submit-top" onclick="app.closeScorecard()">Back to Test Portal</button>
