@@ -1,0 +1,1730 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RRB Technician Grade-I Signal - Basic Science & Engineering Mock Test (100 Qs)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .palette-btn {
+            width: 38px;
+            height: 38px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .custom-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-100 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-indigo-900 text-white px-6 py-3 flex flex-wrap justify-between items-center shadow-md">
+        <div class="flex items-center space-x-3">
+            <div
+                class="bg-white text-indigo-950 font-black rounded-full w-9 h-9 flex items-center justify-center text-sm shadow">
+                RRB</div>
+            <div>
+                <h1 class="text-base md:text-lg font-bold">RRB Technician Grade-I (Signal) — 100 Qs Mega Mock Test</h1>
+                <p class="text-xs text-indigo-200">Subject: Basic Science & Engineering (Pay Level-5)</p>
+            </div>
+        </div>
+        <div class="flex items-center space-x-6 mt-2 sm:mt-0">
+            <div class="bg-indigo-800/80 px-4 py-1.5 rounded-lg border border-indigo-700 flex items-center space-x-2">
+                <span class="text-xs uppercase tracking-wider text-indigo-300">Time Left:</span>
+                <span id="timerDisplay" class="font-mono text-xl font-bold text-amber-300">90:00</span>
+            </div>
+            <button id="submitBtnTop" onclick="confirmSubmit()"
+                class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-1.5 rounded text-sm font-semibold shadow transition">Submit
+                Test</button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-1 flex flex-col lg:flex-row overflow-hidden max-w-7xl w-full mx-auto p-4 gap-4">
+
+        <!-- Question Area -->
+        <section
+            class="flex-1 bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col p-6 overflow-y-auto custom-scroll"
+            id="quizContainer">
+            <div class="flex justify-between items-center pb-3 border-b border-slate-200 mb-4">
+                <div>
+                    <span
+                        class="text-xs font-bold uppercase tracking-wider text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded"
+                        id="topicBadge">Physics Fundamentals</span>
+                    <span class="ml-2 text-xs text-slate-500">Marks: <strong class="text-emerald-600">+1.0</strong> |
+                        Negative: <strong class="text-rose-600">-0.33</strong></span>
+                </div>
+                <div class="text-sm font-semibold text-slate-500">Question <span id="currentQNumText"
+                        class="text-slate-900 font-bold text-base">1</span> of 100</div>
+            </div>
+
+            <!-- Question Text -->
+            <div class="text-base md:text-lg font-medium text-slate-800 mb-6 leading-relaxed" id="questionText">
+                Loading question...
+            </div>
+
+            <!-- Options -->
+            <div class="space-y-3 mb-8" id="optionsContainer">
+                <!-- Rendered dynamically -->
+            </div>
+
+            <!-- Bottom Nav Controls -->
+            <div class="mt-auto pt-4 border-t border-slate-200 flex flex-wrap justify-between gap-3">
+                <div class="flex gap-2">
+                    <button onclick="prevQuestion()"
+                        class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium rounded-lg text-sm transition">Previous</button>
+                    <button onclick="clearResponse()"
+                        class="px-4 py-2 border border-slate-300 hover:bg-slate-50 text-slate-600 font-medium rounded-lg text-sm transition">Clear</button>
+                    <button onclick="toggleMarkForReview()" id="reviewBtn"
+                        class="px-4 py-2 border border-amber-500 text-amber-700 hover:bg-amber-50 font-medium rounded-lg text-sm transition">Mark
+                        for Review</button>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="saveAndNext()"
+                        class="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg text-sm shadow transition">Save
+                        & Next</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Side Palette -->
+        <aside class="w-full lg:w-80 bg-white rounded-xl shadow-sm border border-slate-200 p-4 flex flex-col">
+            <h2 class="text-sm font-bold text-slate-700 mb-3 uppercase tracking-wider">Question Navigation</h2>
+
+            <!-- Legend -->
+            <div class="grid grid-cols-2 gap-2 text-xs mb-4 p-2 bg-slate-50 rounded-lg border border-slate-200">
+                <div class="flex items-center space-x-2"><span
+                        class="w-4 h-4 rounded bg-emerald-600 text-white flex items-center justify-center font-bold text-[10px]">A</span><span>Answered</span>
+                </div>
+                <div class="flex items-center space-x-2"><span
+                        class="w-4 h-4 rounded bg-rose-500 text-white flex items-center justify-center font-bold text-[10px]">NA</span><span>Not
+                        Answered</span></div>
+                <div class="flex items-center space-x-2"><span
+                        class="w-4 h-4 rounded bg-amber-500 text-white flex items-center justify-center font-bold text-[10px]">MR</span><span>Review</span>
+                </div>
+                <div class="flex items-center space-x-2"><span
+                        class="w-4 h-4 rounded bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-[10px]">NV</span><span>Not
+                        Visited</span></div>
+            </div>
+
+            <!-- Quick Filter -->
+            <div class="mb-3">
+                <select id="sectionFilter" onchange="jumpToSection(this.value)"
+                    class="w-full text-xs font-medium p-2 bg-slate-100 border border-slate-300 rounded focus:ring-1 focus:ring-indigo-500">
+                    <option value="0">All Sections (1 - 100)</option>
+                    <option value="0">Physics Fundamentals (Q1 - Q15)</option>
+                    <option value="15">Electricity & DC Circuits (Q16 - Q45)</option>
+                    <option value="45">Magnetism & EMI (Q46 - Q65)</option>
+                    <option value="65">Electronics & Devices (Q66 - Q80)</option>
+                    <option value="80">Digital & Microprocessors (Q81 - Q90)</option>
+                    <option value="90">Measurements & Transducers (Q91 - Q100)</option>
+                </select>
+            </div>
+
+            <!-- Palette Grid -->
+            <div class="flex-1 overflow-y-auto max-h-[360px] custom-scroll pr-1">
+                <div class="grid grid-cols-5 gap-1.5" id="paletteGrid">
+                    <!-- 100 buttons rendered -->
+                </div>
+            </div>
+
+            <!-- Finish Test -->
+            <div class="mt-4 pt-3 border-t border-slate-200 text-center">
+                <button onclick="confirmSubmit()"
+                    class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg shadow text-sm transition">Submit
+                    Final Test</button>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Modal / Scorecard Container -->
+    <div id="resultModal"
+        class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+            <div class="bg-indigo-900 text-white p-6 flex justify-between items-center">
+                <div>
+                    <h2 class="text-xl font-bold">RRB Technician Gr-I Mock Test Scorecard</h2>
+                    <p class="text-xs text-indigo-200 mt-1">Official RRB Pattern Evaluation (+1 Mark / -0.33 Negative)
+                    </p>
+                </div>
+                <button onclick="closeResultModal()"
+                    class="text-white hover:text-indigo-200 text-2xl font-bold">&times;</button>
+            </div>
+
+            <div class="p-6 overflow-y-auto custom-scroll flex-1 space-y-6">
+                <!-- Score Highlights -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+                    <div class="bg-indigo-50 border border-indigo-200 p-4 rounded-xl">
+                        <span class="text-xs font-semibold text-indigo-700 uppercase">Net Score</span>
+                        <div class="text-3xl font-black text-indigo-900 mt-1" id="resScore">0.00</div>
+                        <span class="text-[11px] text-slate-500">out of 100</span>
+                    </div>
+                    <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-xl">
+                        <span class="text-xs font-semibold text-emerald-700 uppercase">Correct</span>
+                        <div class="text-3xl font-black text-emerald-700 mt-1" id="resCorrect">0</div>
+                        <span class="text-[11px] text-slate-500">+1.0 mark each</span>
+                    </div>
+                    <div class="bg-rose-50 border border-rose-200 p-4 rounded-xl">
+                        <span class="text-xs font-semibold text-rose-700 uppercase">Incorrect</span>
+                        <div class="text-3xl font-black text-rose-700 mt-1" id="resIncorrect">0</div>
+                        <span class="text-[11px] text-slate-500">-0.33 penalty each</span>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl">
+                        <span class="text-xs font-semibold text-slate-600 uppercase">Accuracy</span>
+                        <div class="text-3xl font-black text-slate-800 mt-1" id="resAccuracy">0%</div>
+                        <span class="text-[11px] text-slate-500">Attempt Efficiency</span>
+                    </div>
+                </div>
+
+                <!-- Sectional Performance Table -->
+                <div>
+                    <h3 class="font-bold text-slate-800 text-sm mb-3">Topic-Wise Diagnostics</h3>
+                    <div class="overflow-x-auto border border-slate-200 rounded-lg">
+                        <table class="w-full text-xs text-left text-slate-600">
+                            <thead class="bg-slate-100 text-slate-700 font-bold uppercase border-b border-slate-200">
+                                <tr>
+                                    <th class="p-2.5">Topic Area</th>
+                                    <th class="p-2.5 text-center">Total</th>
+                                    <th class="p-2.5 text-center">Attempted</th>
+                                    <th class="p-2.5 text-center">Correct</th>
+                                    <th class="p-2.5 text-center">Incorrect</th>
+                                    <th class="p-2.5 text-right">Net Marks</th>
+                                </tr>
+                            </thead>
+                            <tbody id="sectionalBreakupBody" class="divide-y divide-slate-100">
+                                <!-- Dynamically generated rows -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Solution Review Accordion -->
+                <div>
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="font-bold text-slate-800 text-sm">Detailed Question Review & Explanations</h3>
+                        <span class="text-xs text-slate-500">Green = Correct | Red = Wrong | Grey = Unattempted</span>
+                    </div>
+                    <div id="solutionsReviewContainer" class="space-y-3">
+                        <!-- Questions rendered here with rationales -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-slate-100 px-6 py-3 border-t border-slate-200 flex justify-between items-center">
+                <span class="text-xs text-slate-500">Ready to re-test? Close or restart anytime.</span>
+                <button onclick="restartTest()"
+                    class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-1.5 rounded-lg text-sm font-semibold shadow">Restart
+                    Mock Test</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- 100 CURATED QUESTIONS COVERING FULL BASIC SCIENCE & ENGINEERING SYLLABUS ---
+        const questionsData = [
+    {
+        "q": "Which of the following represents the correct dimensional formula for Universal Gravitational Constant (G)?",
+        "topic": "Physics Fundamentals",
+        "options": [
+            "[M⁻¹ L³ T⁻²]",
+            "[M¹ L² T⁻²]",
+            "[M⁻¹ L² T⁻¹]",
+            "[M⁰ L³ T⁻²]"
+        ],
+        "correct": 0,
+        "exp": "From Newton's law of gravitation, F = G (m_1 m_2) / r² ⇒ G = (F r²) / (m_1 m_2) = ([MLT⁻²][L²]) / [M²] = [M⁻¹L³T⁻²]."
+    },
+    {
+        "q": "A vernier caliper has 1 main scale division equal to 1 mm and 10 vernier divisions coincide with 9 main scale divisions. What is the least count of the instrument?",
+        "topic": "Physics Fundamentals",
+        "options": [
+            "0.01 mm",
+            "0.1 mm",
+            "0.05 mm",
+            "1.0 mm"
+        ],
+        "correct": 1,
+        "exp": "Least Count (LC) = 1 MSD - 1 VSD = 1 mm - 0.9 mm = 0.1 mm."
+    },
+    {
+        "q": "If an object weighs 60 N on the surface of the Earth, what would be its approximate mass and weight on the surface of the Moon? (g_moon ≈ g/6, g_earth ≈ 10 m/s²)",
+        "topic": "Physics Fundamentals",
+        "options": [
+            "Mass = 6 kg, Weight = 10 N",
+            "Mass = 1 kg, Weight = 10 N",
+            "Mass = 6 kg, Weight = 60 N",
+            "Mass = 10 kg, Weight = 6 N"
+        ],
+        "correct": 0,
+        "exp": "Mass is invariant: m = W/g = 60/10 = 6 kg. Weight on moon = W_earth / 6 = 60 / 6 = 10 N."
+    },
+    {
+        "q": "The relative density of a substance is 7.8. What is its density in SI units?",
+        "topic": "Physics Fundamentals",
+        "options": [
+            "78 kg/m³",
+            "780 kg/m³",
+            "7800 kg/m³",
+            "0.78 kg/m³"
+        ],
+        "correct": 2,
+        "exp": "Density = Relative Density × Density of water = 7.8 × 1000 kg/m³ = 7800 kg/m³."
+    },
+    {
+        "q": "A body starting from rest moves with a constant acceleration of 2 m/s². What is the distance covered by the body in the 5ᵗʰ second?",
+        "topic": "Physics Fundamentals",
+        "options": [
+            "9 m",
+            "10 m",
+            "25 m",
+            "5 m"
+        ],
+        "correct": 0,
+        "exp": "Distance in nᵗʰ second: s_n = u + a / 2(2n - 1) = 0 + 2 / 2(2(5) - 1) = 9 m."
+    },
+    {
+        "q": "A force F = (3î + 4ĵ) N acts on a particle causing displacement s = (2î + 5ĵ) m. What is the work done?",
+        "topic": "Physics Fundamentals",
+        "options": [
+            "14 J",
+            "26 J",
+            "35 J",
+            "20 J"
+        ],
+        "correct": 1,
+        "exp": "Work done W = F · s = (3)(2) + (4)(5) = 6 + 20 = 26 J."
+    },
+    {
+        "q": "If the linear momentum of a moving body is increased by 50%, by what percentage will its kinetic energy increase?",
+        "topic": "Physics Fundamentals",
+        "options": [
+            "50%",
+            "100%",
+            "125%",
+            "225%"
+        ],
+        "correct": 2,
+        "exp": "KE = p² / 2m. If p' = 1.5p, KE' = (1.5)² KE = 2.25 KE. Percentage increase = (2.25 - 1) × 100% = 125%."
+    },
+    {
+        "q": "One metric horsepower is approximately equal to how many watts?",
+        "topic": "Physics Fundamentals",
+        "options": [
+            "746 W",
+            "735.5 W",
+            "1000 W",
+            "550 W"
+        ],
+        "correct": 1,
+        "exp": "One metric horsepower (DIN/PS) is ≈ 735.5 W, whereas British/Imperial horsepower is 746 W."
+    },
+    {
+        "q": "At what numerical temperature do the Celsius and Fahrenheit temperature scales coincide?",
+        "topic": "Physics Fundamentals",
+        "options": [
+            "0°",
+            "-40°",
+            "100°",
+            "-32°"
+        ],
+        "correct": 1,
+        "exp": "Using C / 5 = (F-32) / 9, setting C = F = x ⇒ 9x = 5x - 160 ⇒ 4x = -160 ⇒ x = -40°."
+    },
+    {
+        "q": "How much heat energy is required to melt 10 g of ice at 0°C to water at 0°C? (Latent heat of fusion of ice = 80 cal/g)",
+        "topic": "Physics Fundamentals",
+        "options": [
+            "80 cal",
+            "800 cal",
+            "5400 cal",
+            "100 cal"
+        ],
+        "correct": 1,
+        "exp": "Q = mL = 10 g × 80 cal/g = 800 cal."
+    },
+    {
+        "q": "What is the relation between the coefficient of linear expansion (α), superficial expansion (β), and cubical expansion (γ) for an isotropic solid?",
+        "topic": "Physics Fundamentals",
+        "options": [
+            "α : β : γ = 1 : 2 : 3",
+            "α : β : γ = 3 : 2 : 1",
+            "α : β : γ = 1 : 1 : 1",
+            "α : β : γ = 1 : 4 : 9"
+        ],
+        "correct": 0,
+        "exp": "For isotropic materials, areal expansion β = 2α and volumetric expansion γ = 3α, hence α : β : γ = 1 : 2 : 3."
+    },
+    {
+        "q": "A stone tied to a string is rotated in a horizontal circle with uniform speed. What is the net work done by the centripetal tension force over one complete rotation?",
+        "topic": "Physics Fundamentals",
+        "options": [
+            "Zero",
+            "2π r F",
+            "1 / 2mv²",
+            "mv²/r"
+        ],
+        "correct": 0,
+        "exp": "Centripetal force is always directed perpendicular to the instantaneous displacement vector (θ = 90°), so W = F s cos(90°) = 0."
+    },
+    {
+        "q": "Which of the following physical quantities has the SI unit J · s?",
+        "topic": "Physics Fundamentals",
+        "options": [
+            "Power",
+            "Planck's constant",
+            "Momentum",
+            "Pressure"
+        ],
+        "correct": 1,
+        "exp": "Energy E = hν ⇒ h = E/ν = J / (s⁻¹) = J · s, which is Planck's constant (also identical to angular momentum)."
+    },
+    {
+        "q": "If a car accelerates uniformly from 18 km/h to 72 km/h in 5 seconds, what is the acceleration?",
+        "topic": "Physics Fundamentals",
+        "options": [
+            "2 m/s²",
+            "3 m/s²",
+            "4 m/s²",
+            "10.8 m/s²"
+        ],
+        "correct": 1,
+        "exp": "u = 18 × 5 / 18 = 5 m/s, v = 72 × 5 / 18 = 20 m/s. Acceleration a = (v - u) / t = (20 - 5) / 5 = 3 m/s²."
+    },
+    {
+        "q": "When a metal ball with a concentric hollow spherical cavity is heated, the volume of the inner cavity will:",
+        "topic": "Physics Fundamentals",
+        "options": [
+            "Increase",
+            "Decrease",
+            "Remain unchanged",
+            "First decrease then increase"
+        ],
+        "correct": 0,
+        "exp": "Thermal expansion acts like photographic enlargement; all linear dimensions expand outwards, so the volume of the cavity increases."
+    },
+    {
+        "q": "How many electrons constitute a negative charge of 1 Coulomb?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "6.25 × 10¹⁸",
+            "1.6 × 10⁻¹⁹",
+            "6.023 × 10²³",
+            "9.11 × 10⁻³¹"
+        ],
+        "correct": 0,
+        "exp": "n = Q / e = 1 / (1.6 × 10⁻¹⁹) = 6.25 × 10¹⁸ electrons."
+    },
+    {
+        "q": "What is the electric field intensity inside a hollow spherical charged conductor of radius R?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "Zero",
+            "1 / 4πε₀Q / R²",
+            "1 / 4πε₀Q / R",
+            "Infinite"
+        ],
+        "correct": 0,
+        "exp": "According to Gauss's Law, since all excess electrostatic charge resides entirely on the outer surface of a conductor, E_inside = 0."
+    },
+    {
+        "q": "The electric potential at a distance r from an isolated point charge q is directly proportional to:",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "1/r",
+            "1/r²",
+            "r",
+            "r²"
+        ],
+        "correct": 0,
+        "exp": "Electrostatic potential V = 1 / 4πε₀ q / r, which varies inversely with distance (V ∝ 1/r)."
+    },
+    {
+        "q": "A uniform metallic wire of resistance R is stretched uniformly such that its length is doubled. What is its new resistance?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "2R",
+            "4R",
+            "R/2",
+            "R/4"
+        ],
+        "correct": 1,
+        "exp": "Volume remains constant (V = A · L). If L' = 2L, then A' = A/2. R' = ρ L' / A' = ρ 2L / A/2 = 4R."
+    },
+    {
+        "q": "Three resistors of values 2 Ω, 3 Ω, and 6 Ω are connected in parallel. What is their equivalent resistance?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "1 Ω",
+            "11 Ω",
+            "0.5 Ω",
+            "2 Ω"
+        ],
+        "correct": 0,
+        "exp": "1 / R_eq = 1 / 2 + 1 / 3 + 1 / 6 = (3+2+1) / 6 = 6 / 6 = 1 ⇒ R_eq = 1 Ω."
+    },
+    {
+        "q": "Two bulbs rated 220 V, 40 W and 220 V, 100 W are connected in series across a 220 V supply. Which bulb will glow brighter?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "The 40 W bulb",
+            "The 100 W bulb",
+            "Both will glow with equal brightness",
+            "Neither bulb will glow"
+        ],
+        "correct": 0,
+        "exp": "Rated resistance R = V²/P, so R_40 > R_100. In series, current is identical, and power dissipated is P = I² R. Higher resistance produces more heat and light."
+    },
+    {
+        "q": "An electric heater rated 1000 W operates for 2 hours daily. What is the total energy consumed in the month of April (30 days)?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "60 kWh",
+            "30 kWh",
+            "120 kWh",
+            "600 kWh"
+        ],
+        "correct": 0,
+        "exp": "Energy = P × t = 1 kW × (2 h/day × 30 days) = 60 kWh (or 60 units)."
+    },
+    {
+        "q": "The temperature coefficient of resistance (α) for pure semiconductor materials is:",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "Always negative",
+            "Always positive",
+            "Zero",
+            "Positive at high temperatures only"
+        ],
+        "correct": 0,
+        "exp": "In semiconductors, higher temperatures break covalent bonds, creating more electron-hole pairs, which lowers resistivity (negative temperature coefficient)."
+    },
+    {
+        "q": "Which law states that the algebraic sum of currents meeting at any electrical circuit junction is equal to zero?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "Kirchhoff's Current Law (KCL)",
+            "Kirchhoff's Voltage Law (KVL)",
+            "Faraday's Law",
+            "Ohm's Law"
+        ],
+        "correct": 0,
+        "exp": "KCL states Σ I_junction = 0, which is based on the principle of conservation of electric charge."
+    },
+    {
+        "q": "Kirchhoff's Voltage Law (KVL) is a direct consequence of the conservation of:",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "Electric charge",
+            "Energy",
+            "Momentum",
+            "Mass"
+        ],
+        "correct": 1,
+        "exp": "KVL states that the directed sum of potential differences in a closed loop is zero, adhering to the conservation of energy."
+    },
+    {
+        "q": "Specific resistance (resistivity ρ) of a conductor depends primarily upon its:",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "Length",
+            "Cross-sectional area",
+            "Material and temperature",
+            "Shape"
+        ],
+        "correct": 2,
+        "exp": "Resistivity is an intensive material property that varies with atomic composition and temperature, not geometric dimensions."
+    },
+    {
+        "q": "What is the equivalent resistance between two diametrically opposite points of a circular ring made of uniform resistance wire having total resistance 12 Ω?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "3 Ω",
+            "6 Ω",
+            "12 Ω",
+            "1.5 Ω"
+        ],
+        "correct": 0,
+        "exp": "Connecting diametrically opposite points splits the ring into two parallel semicircular branches of 6 Ω each: R_eq = 6/2 = 3 Ω."
+    },
+    {
+        "q": "If an electric iron takes 5 A from a 220 V line, what is its internal resistance?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "44 Ω",
+            "1100 Ω",
+            "22 Ω",
+            "88 Ω"
+        ],
+        "correct": 0,
+        "exp": "From Ohm's law: R = V/I = 220 / 5 = 44 Ω."
+    },
+    {
+        "q": "Two copper wires of lengths in ratio 1:2 and diameters in ratio 1:2 have resistances in the ratio:",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "1:2",
+            "2:1",
+            "1:1",
+            "1:4"
+        ],
+        "correct": 1,
+        "exp": "R = ρ L / A = ρ L / (π d² / 4) ∝ L / d². Ratio R_1 / R_2 = (L_1 / L_2) (d_2 / d_1)² = (1 / 2) (2)² = 4 / 2 = 2:1."
+    },
+    {
+        "q": "What is the total capacitance of three identical 30 μF capacitors connected in series?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "90 μF",
+            "10 μF",
+            "30 μF",
+            "15 μF"
+        ],
+        "correct": 1,
+        "exp": "In series, 1 / C_eq = 1 / C + 1 / C + 1 / C ⇒ C_eq = C/3 = 30 / 3 = 10 μF."
+    },
+    {
+        "q": "What is the energy stored in a 10 μF capacitor charged to a potential difference of 100 V?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "0.05 J",
+            "0.1 J",
+            "1.0 J",
+            "0.5 J"
+        ],
+        "correct": 0,
+        "exp": "E = 1 / 2 C V² = 1 / 2 × (10 × 10⁻⁶) × (100)² = 5 × 10⁻⁶ × 10⁴ = 0.05 J."
+    },
+    {
+        "q": "Superconductors are materials that exhibit which remarkable electrical property below their critical temperature (T_c)?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "Strictly zero electrical resistivity",
+            "Infinite resistivity",
+            "Negative resistance",
+            "Zero magnetic permeability only"
+        ],
+        "correct": 0,
+        "exp": "Below T_c, superconductors have zero electrical resistance and completely expel interior magnetic fields (Meissner effect)."
+    },
+    {
+        "q": "An ideal constant voltage source must possess:",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "Zero internal resistance",
+            "Infinite internal resistance",
+            "Unity internal resistance",
+            "Variable internal resistance"
+        ],
+        "correct": 0,
+        "exp": "An ideal voltage source delivers a steady terminal voltage regardless of output load current, which requires R_int = 0."
+    },
+    {
+        "q": "An ideal constant current source must possess:",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "Infinite internal resistance",
+            "Zero internal resistance",
+            "100 Ω resistance",
+            "Negative resistance"
+        ],
+        "correct": 0,
+        "exp": "An ideal current source supplies a fixed current across any load, requiring infinite parallel internal resistance (R_int = ∞)."
+    },
+    {
+        "q": "What is the SI unit of electric conductance?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "Siemens (S)",
+            "Ohm (Ω)",
+            "Henry (H)",
+            "Tesla (T)"
+        ],
+        "correct": 0,
+        "exp": "Conductance is the reciprocal of resistance (G = 1/R). Its SI unit is Siemens (S or Ω⁻¹, formerly mho)."
+    },
+    {
+        "q": "The maximum power transfer theorem states that maximum power is delivered from a source to a load when:",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "R_L = R_th",
+            "R_L = 2 R_th",
+            "R_L = 0",
+            "R_L = ∞"
+        ],
+        "correct": 0,
+        "exp": "In DC resistive circuits, maximum power transfer occurs when load resistance equals source Thevenin resistance (R_L = R_th), with 50% efficiency."
+    },
+    {
+        "q": "A current of 2 A passes through a copper wire. How much charge flows past a given cross-section in 1 minute?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "120 C",
+            "2 C",
+            "60 C",
+            "240 C"
+        ],
+        "correct": 0,
+        "exp": "Q = I × t = 2 A × 60 s = 120 C."
+    },
+    {
+        "q": "In an electrical circuit, three resistors of 10 Ω, 20 Ω, and 30 Ω are in series across 120 V. What is the voltage across the 20 Ω resistor?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "40 V",
+            "20 V",
+            "60 V",
+            "30 V"
+        ],
+        "correct": 0,
+        "exp": "R_total = 10 + 20 + 30 = 60 Ω. Current I = 120 / 60 = 2 A. Voltage V_20 = I × R = 2 × 20 = 40 V."
+    },
+    {
+        "q": "The relation between electric field intensity (E) and electric potential (V) in one dimension is:",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "E = -dV / dx",
+            "E = dV / dx",
+            "V = -dE / dx",
+            "E = -∫ V dx"
+        ],
+        "correct": 0,
+        "exp": "Electric field equals the negative gradient of electric potential (E = -dV/dx)."
+    },
+    {
+        "q": "A fuse wire should have:",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "High resistivity and low melting point",
+            "Low resistivity and high melting point",
+            "High resistivity and high melting point",
+            "Low resistivity and low melting point"
+        ],
+        "correct": 0,
+        "exp": "A safety fuse requires high resistivity (to rapidly generate heat: H = I²Rt) and a low melting point (typically lead-tin alloy) to break the circuit during overcurrent."
+    },
+    {
+        "q": "Which parameter does NOT change when an alternating AC signal passes through a linear ideal transformer?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "Frequency",
+            "Voltage",
+            "Current",
+            "Impedance"
+        ],
+        "correct": 0,
+        "exp": "Transformers step voltage and current up or down via magnetic coupling, but operating signal frequency remains constant."
+    },
+    {
+        "q": "What is the peak factor of a pure sinusoidal alternating voltage waveform?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "√(2) ≈ 1.414",
+            "1.11",
+            "0.707",
+            "1.732"
+        ],
+        "correct": 0,
+        "exp": "Peak Factor = V_m / V_rms = V_m / (V_m / √(2)) = √(2) ≈ 1.414."
+    },
+    {
+        "q": "What is the form factor of a pure sinusoidal wave?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "1.11",
+            "1.414",
+            "0.637",
+            "1.57"
+        ],
+        "correct": 0,
+        "exp": "Form Factor = V_rms / V_avg = (0.707 V_m) / (0.637 V_m) ≈ 1.11."
+    },
+    {
+        "q": "In a purely inductive AC circuit, current:",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "Lags behind the voltage by 90°",
+            "Leads the voltage by 90°",
+            "Is in phase with the voltage",
+            "Lags behind the voltage by 180°"
+        ],
+        "correct": 0,
+        "exp": "In a pure inductor, induced back-EMF opposes current change, causing current to lag behind applied voltage by π/2 radians (90°)."
+    },
+    {
+        "q": "What is the SI unit of magnetic flux?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "Weber (Wb)",
+            "Tesla (T)",
+            "Henry (H)",
+            "Gauss"
+        ],
+        "correct": 0,
+        "exp": "The SI unit of magnetic flux Φ is the Weber (Wb), where 1 Wb = 1 T · m²."
+    },
+    {
+        "q": "The force experienced by a particle carrying charge q moving with velocity v in a magnetic field B is zero when the angle between v and B is:",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "0° or 180°",
+            "90°",
+            "45°",
+            "60°"
+        ],
+        "correct": 0,
+        "exp": "Lorentz magnetic force is F = qvBsinθ. When θ = 0° or 180°, sinθ = 0, so no deflecting magnetic force is exerted."
+    },
+    {
+        "q": "Two long, straight parallel wires separated by distance d carry currents in opposite directions. The wires will:",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "Repel each other",
+            "Attract each other",
+            "Rotate clockwise",
+            "Exert zero net force"
+        ],
+        "correct": 0,
+        "exp": "Parallel currents in the same direction attract; antiparallel currents (opposite directions) repel."
+    },
+    {
+        "q": "What is the magnetic field intensity (B) at the center of a long ideal solenoid having n turns per unit length carrying current I?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "μ₀ n I",
+            "(μ₀ n I) / 2",
+            "(μ₀ I) / (2π r)",
+            "μ₀ n² I"
+        ],
+        "correct": 0,
+        "exp": "Ampere's Circuital Law gives the magnetic field inside an ideal solenoid as B = μ₀ n I."
+    },
+    {
+        "q": "Lenz's Law in electromagnetic induction is based on the law of conservation of:",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "Energy",
+            "Charge",
+            "Momentum",
+            "Mass"
+        ],
+        "correct": 0,
+        "exp": "Lenz's Law ensures that mechanical work done against opposing magnetic forces equals the electrical energy generated, conserving total energy."
+    },
+    {
+        "q": "Fleming's Left-Hand Rule is used to determine the direction of:",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "Magnetic force acting on a current-carrying conductor",
+            "Induced current in a generator",
+            "Magnetic lines of force around a wire",
+            "Electric field"
+        ],
+        "correct": 0,
+        "exp": "Fleming's Left-Hand Rule is for motors (Thumb: Force/Motion, Forefinger: Magnetic Field, Middle finger: Current)."
+    },
+    {
+        "q": "Fleming's Right-Hand Rule is primarily applied to determine the direction of:",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "Dynamically induced current (Generators)",
+            "Magnetic deflection of electrons",
+            "Mechanical torque in motors",
+            "Electrostatic lines"
+        ],
+        "correct": 0,
+        "exp": "Fleming's Right-Hand Rule finds the direction of induced current when a conductor moves across a magnetic field (generators)."
+    },
+    {
+        "q": "A straight wire of length 0.5 m carries a current of 4 A in a uniform magnetic field of 2 T perpendicular to the wire. What is the magnetic force?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "4 N",
+            "2 N",
+            "8 N",
+            "1 N"
+        ],
+        "correct": 0,
+        "exp": "F = I L B sin(90°) = 4 × 0.5 × 2 × 1 = 4 N."
+    },
+    {
+        "q": "The self-inductance of a coil is 2 H. If the current changes uniformly from 5 A to 1 A in 0.1 s, what magnitude of EMF is induced?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "80 V",
+            "40 V",
+            "20 V",
+            "8 V"
+        ],
+        "correct": 0,
+        "exp": "|e| = L |(Δ I) / (Δ t)| = 2 × |(1 - 5) / 0.1| = 2 × 40 = 80 V."
+    },
+    {
+        "q": "What is the magnetic field (B) at a radial distance r from an infinitely long straight wire carrying current I?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "(μ₀ I) / (2π r)",
+            "(μ₀ I) / (4π r²)",
+            "(μ₀ I) / (2 r)",
+            "μ₀ I r"
+        ],
+        "correct": 0,
+        "exp": "From Ampere's Law, ∮ B dl = B(2π r) = μ₀ I ⇒ B = (μ₀ I) / (2π r)."
+    },
+    {
+        "q": "The permeability of free space (μ₀) in SI units has the numerical value:",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "4π × 10⁻⁷ H/m",
+            "8.854 × 10⁻¹² F/m",
+            "9 × 10⁹ N · m²/C²",
+            "1.256 × 10⁻⁴ H/m"
+        ],
+        "correct": 0,
+        "exp": "μ₀ = 4π × 10⁻⁷ T · m/A (or H/m)."
+    },
+    {
+        "q": "Eddy currents induced in solid iron transformer cores are minimized primarily by:",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "Using thin laminated steel sheets insulated with varnish",
+            "Increasing wire diameter",
+            "Using solid copper blocks",
+            "Decreasing supply frequency"
+        ],
+        "correct": 0,
+        "exp": "Laminating the core into thin sheets separated by varnish limits eddy current loops to narrow paths, reducing I²R core losses."
+    },
+    {
+        "q": "What is the energy stored in a 0.5 H inductor carrying a steady current of 4 A?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "4 J",
+            "2 J",
+            "8 J",
+            "1 J"
+        ],
+        "correct": 0,
+        "exp": "E = 1 / 2 L I² = 1 / 2 × 0.5 × (4)² = 0.25 × 16 = 4 J."
+    },
+    {
+        "q": "Diamagnetic materials exhibit a relative magnetic permeability (μᵣ) that is:",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "Slightly less than 1",
+            "Slightly greater than 1",
+            "Extremely large (≫ 1000)",
+            "Exactly zero"
+        ],
+        "correct": 0,
+        "exp": "Diamagnetic materials have magnetic susceptibility χₘ < 0, making μᵣ = 1 + χₘ slightly less than 1."
+    },
+    {
+        "q": "The Curie temperature is the critical threshold temperature above which a ferromagnetic material transforms into a:",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "Paramagnetic material",
+            "Diamagnetic material",
+            "Superconductor",
+            "Permanent magnet"
+        ],
+        "correct": 0,
+        "exp": "Above the Curie temperature (T_C), thermal agitation disrupts spontaneous domain alignment, turning ferromagnetic materials paramagnetic."
+    },
+    {
+        "q": "What is the mutual inductance between two magnetically coupled coils when the coupling coefficient is k = 0.5, and self-inductances are L_1 = 4 H and L_2 = 9 H?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "3 H",
+            "6 H",
+            "13 H",
+            "1.5 H"
+        ],
+        "correct": 0,
+        "exp": "M = k √(L_1 L_2) = 0.5 × √(4 × 9) = 0.5 × 6 = 3 H."
+    },
+    {
+        "q": "A coil of 200 turns is linked with a magnetic flux of 0.05 Wb. If the flux reverses direction in 0.02 s, what is the magnitude of the average induced EMF?",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "1000 V",
+            "500 V",
+            "2000 V",
+            "250 V"
+        ],
+        "correct": 0,
+        "exp": "Flux changes from +0.05 to -0.05, so Δ Φ = 0.10 Wb. |e| = N (Δ Φ) / (Δ t) = 200 × 0.10 / 0.02 = 200 × 5 = 1000 V."
+    },
+    {
+        "q": "A magnetic compass needle placed in a uniform magnetic field experiences:",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "Only a torque and no net translating force",
+            "Both a net force and a torque",
+            "Only a net translating force",
+            "Neither force nor torque"
+        ],
+        "correct": 0,
+        "exp": "Equal and opposite forces on the two poles cancel out to yield zero net force, but form a couple that produces aligning torque."
+    },
+    {
+        "q": "The area enclosed by a material's B-H hysteresis loop represents:",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "Hysteresis energy loss per unit volume per cycle",
+            "Magnetic saturation limit",
+            "Total magnetic flux density",
+            "Coercivity"
+        ],
+        "correct": 0,
+        "exp": "The area of the B-H loop corresponds to the energy dissipated as heat per unit volume per magnetization cycle."
+    },
+    {
+        "q": "Hard ferromagnetic materials (used for making strong permanent magnets) are characterized by having:",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "High retentivity and high coercivity",
+            "High retentivity and low coercivity",
+            "Low retentivity and low coercivity",
+            "Zero retentivity"
+        ],
+        "correct": 0,
+        "exp": "Permanent magnets require high retentivity (to retain magnetism) and high coercivity (to resist demagnetization)."
+    },
+    {
+        "q": "According to Lenz's law, the direction of induced electromotive force (EMF) is such that it:",
+        "topic": "Electricity & Magnetism",
+        "options": [
+            "Opposes the change in magnetic flux producing it",
+            "Aids the change in magnetic flux producing it",
+            "Is always in the direction of the magnetic field",
+            "Is independent of magnetic flux variation"
+        ],
+        "correct": 0,
+        "exp": "Lenz's Law is a consequence of conservation of energy: the polarity of induced EMF creates an induced current whose magnetic field opposes the change in magnetic flux that caused it (e = -dΦ/dt)."
+    },
+    {
+        "q": "What is the forbidden energy band gap (E_g) of pure Silicon at room temperature (300 K)?",
+        "topic": "Electronics & Devices",
+        "options": [
+            "1.1 eV",
+            "0.72 eV",
+            "0.025 eV",
+            "5.0 eV"
+        ],
+        "correct": 0,
+        "exp": "At 300 K, the band gap of Silicon is ≈ 1.1 eV, whereas for Germanium it is ≈ 0.72 eV."
+    },
+    {
+        "q": "To form an N-type extrinsic semiconductor, pure Germanium must be doped with pentavalent impurity atoms such as:",
+        "topic": "Electronics & Devices",
+        "options": [
+            "Phosphorus or Arsenic",
+            "Boron or Indium",
+            "Gallium or Aluminum",
+            "Silicon"
+        ],
+        "correct": 0,
+        "exp": "Pentavalent dopants (Phosphorus, Arsenic, Antimony) provide excess donor conduction electrons, producing N-type semiconductors."
+    },
+    {
+        "q": "What is the barrier potential (knee/cut-in voltage) of a standard forward-biased Silicon P-N junction diode?",
+        "topic": "Electronics & Devices",
+        "options": [
+            "0.7 V",
+            "0.3 V",
+            "1.1 V",
+            "0.1 V"
+        ],
+        "correct": 0,
+        "exp": "The typical barrier potential is ≈ 0.7 V for Silicon and ≈ 0.3 V for Germanium."
+    },
+    {
+        "q": "A Zener diode is designed to operate primarily in which region to serve as a voltage regulator?",
+        "topic": "Electronics & Devices",
+        "options": [
+            "Reverse breakdown region",
+            "Forward active region",
+            "Cut-off region",
+            "Saturation region"
+        ],
+        "correct": 0,
+        "exp": "In reverse breakdown, a Zener diode maintains a constant voltage across its terminals across varying currents."
+    },
+    {
+        "q": "What is the theoretical maximum rectification efficiency of a half-wave rectifier?",
+        "topic": "Electronics & Devices",
+        "options": [
+            "40.6%",
+            "81.2%",
+            "50.0%",
+            "100%"
+        ],
+        "correct": 0,
+        "exp": "Maximum efficiency η = (0.406 R_L) / (r_f + R_L) ≈ 40.6%. Full-wave rectifiers double this to 81.2%."
+    },
+    {
+        "q": "What is the ripple factor of an unfiltered full-wave bridge rectifier?",
+        "topic": "Electronics & Devices",
+        "options": [
+            "0.482",
+            "1.21",
+            "0.85",
+            "0.11"
+        ],
+        "correct": 0,
+        "exp": "For full-wave rectifiers, ripple factor γ = √((I_rms / I_dc)² - 1) ≈ 0.482 (compared to 1.21 for half-wave)."
+    },
+    {
+        "q": "In a bipolar junction transistor (BJT), which region is physically the largest to dissipate thermal heat?",
+        "topic": "Electronics & Devices",
+        "options": [
+            "Collector",
+            "Base",
+            "Emitter",
+            "Substrate"
+        ],
+        "correct": 0,
+        "exp": "The collector has the largest physical area to dissipate heat generated at the reverse-biased collector-base junction."
+    },
+    {
+        "q": "For a transistor, if the common base gain is α = 0.98, what is the common emitter current gain β?",
+        "topic": "Electronics & Devices",
+        "options": [
+            "49",
+            "98",
+            "50",
+            "24.5"
+        ],
+        "correct": 0,
+        "exp": "β = α / (1 - α) = 0.98 / (1 - 0.98) = 0.98 / 0.02 = 49."
+    },
+    {
+        "q": "In a BJT operating in the active amplification region, the emitter-base and collector-base junctions are biased as follows:",
+        "topic": "Electronics & Devices",
+        "options": [
+            "Emitter-base forward, collector-base reverse",
+            "Both junctions forward biased",
+            "Both junctions reverse biased",
+            "Emitter-base reverse, collector-base forward"
+        ],
+        "correct": 0,
+        "exp": "Linear active amplification requires a forward-biased emitter-base junction and a reverse-biased collector-base junction."
+    },
+    {
+        "q": "In an NPN transistor, the fundamental relation between emitter current (I_E), base current (I_B), and collector current (I_C) is:",
+        "topic": "Electronics & Devices",
+        "options": [
+            "I_E = I_B + I_C",
+            "I_C = I_E + I_B",
+            "I_B = I_E + I_C",
+            "I_E = I_C - I_B"
+        ],
+        "correct": 0,
+        "exp": "By conservation of charge, the emitter supplies all carriers: I_E = I_B + I_C."
+    },
+    {
+        "q": "Which transistor configuration provides both voltage gain and current gain greater than unity, making it ideal for multistage audio amplification?",
+        "topic": "Electronics & Devices",
+        "options": [
+            "Common Emitter (CE)",
+            "Common Base (CB)",
+            "Common Collector (CC)",
+            "Emitter Follower"
+        ],
+        "correct": 0,
+        "exp": "Common Emitter (CE) provides moderate-to-high current and voltage gain, delivering the highest overall power gain."
+    },
+    {
+        "q": "What is the peak inverse voltage (PIV) across each non-conducting diode in an ideal full-wave bridge rectifier delivering peak secondary voltage V_m?",
+        "topic": "Electronics & Devices",
+        "options": [
+            "V_m",
+            "2V_m",
+            "V_m/2",
+            "V_m/√(2)"
+        ],
+        "correct": 0,
+        "exp": "In a bridge rectifier, the PIV per diode is V_m. (In a center-tapped transformer rectifier, it is 2V_m)."
+    },
+    {
+        "q": "An ideal operational amplifier (Op-Amp) has which of the following input and output impedance characteristics?",
+        "topic": "Electronics & Devices",
+        "options": [
+            "Infinite input impedance and zero output impedance",
+            "Zero input impedance and infinite output impedance",
+            "Infinite input and infinite output impedance",
+            "Zero input and zero output impedance"
+        ],
+        "correct": 0,
+        "exp": "An ideal op-amp draws zero input current (R_in = ∞) and provides a robust output voltage (R_out = 0)."
+    },
+    {
+        "q": "A light emitting diode (LED) emits light when it is operated in:",
+        "topic": "Electronics & Devices",
+        "options": [
+            "Forward bias",
+            "Reverse breakdown",
+            "Unbiased thermal equilibrium",
+            "Zener saturation"
+        ],
+        "correct": 0,
+        "exp": "Under forward bias, injected minority electrons recombine with majority holes across the direct band-gap, emitting energy as photons."
+    },
+    {
+        "q": "The primary charge carriers responsible for electrical conduction in P-type semiconductor materials are:",
+        "topic": "Electronics & Devices",
+        "options": [
+            "Holes",
+            "Free electrons",
+            "Negative ions",
+            "Positrons"
+        ],
+        "correct": 0,
+        "exp": "In P-type materials, doping with trivalent atoms creates vacancies (holes) in the valence band as majority carriers."
+    },
+    {
+        "q": "Which pair of logic gates are known as 'Universal Gates' because any Boolean logic circuit can be constructed using only one type?",
+        "topic": "Digital & Microprocessors",
+        "options": [
+            "NAND and NOR",
+            "AND and OR",
+            "XOR and XNOR",
+            "NOT and AND"
+        ],
+        "correct": 0,
+        "exp": "NAND and NOR gates are universal; any logic function (AND, OR, NOT, XOR) can be realized using only NAND or only NOR gates."
+    },
+    {
+        "q": "According to De Morgan's theorem, the complement of a sum (A + B)' equals:",
+        "topic": "Digital & Microprocessors",
+        "options": [
+            "A' · B'",
+            "A' + B'",
+            "A · B",
+            "A + B"
+        ],
+        "correct": 0,
+        "exp": "De Morgan's first theorem: (A + B)' = A' · B'."
+    },
+    {
+        "q": "What is the output (Y) of a two-input XOR gate when both inputs A and B are equal to 1?",
+        "topic": "Digital & Microprocessors",
+        "options": [
+            "0",
+            "1",
+            "High impedance",
+            "Toggle"
+        ],
+        "correct": 0,
+        "exp": "An XOR gate outputs 1 only when inputs differ (Y = A ⊕ B = 1 ⊕ 1 = 0)."
+    },
+    {
+        "q": "What is the 8-bit two's complement representation of decimal number -18?",
+        "topic": "Digital & Microprocessors",
+        "options": [
+            "11101110",
+            "00010010",
+            "11101101",
+            "10010010"
+        ],
+        "correct": 0,
+        "exp": "+18 = 00010010_2. 1's complement = 11101101. Add 1 to get 2's complement: 11101110_2."
+    },
+    {
+        "q": "How many address lines are required to uniquely address 64 KB of memory in an 8085 microprocessor?",
+        "topic": "Digital & Microprocessors",
+        "options": [
+            "16",
+            "8",
+            "20",
+            "12"
+        ],
+        "correct": 0,
+        "exp": "64 KB = 64 × 1024 = 65,536 bytes = 2¹⁶ bytes, requiring 16 address lines (A_15-A_0)."
+    },
+    {
+        "q": "In an 8085 microprocessor, which hardware interrupt is non-maskable and possesses the highest priority?",
+        "topic": "Digital & Microprocessors",
+        "options": [
+            "TRAP",
+            "RST 7.5",
+            "RST 6.5",
+            "INTR"
+        ],
+        "correct": 0,
+        "exp": "TRAP is edge- and level-sensitive, non-maskable, and has the highest priority among 8085 interrupts."
+    },
+    {
+        "q": "How many bits wide is the ALU and internal accumulator of the standard 8085 microprocessor?",
+        "topic": "Digital & Microprocessors",
+        "options": [
+            "8 bits",
+            "16 bits",
+            "4 bits",
+            "32 bits"
+        ],
+        "correct": 0,
+        "exp": "The 8085 is an 8-bit microprocessor; its accumulator, registers, and ALU process 8 bits of data in parallel."
+    },
+    {
+        "q": "The standard Intel 8051 microcontroller contains how many bytes of internal on-chip RAM?",
+        "topic": "Digital & Microprocessors",
+        "options": [
+            "128 Bytes",
+            "256 Bytes",
+            "64 Bytes",
+            "1024 Bytes"
+        ],
+        "correct": 0,
+        "exp": "The original 8051 includes 128 bytes of internal data RAM, plus Special Function Registers (SFRs)."
+    },
+    {
+        "q": "How many 8-bit parallel I/O ports are integrated onto a standard 8051 microcontroller chip?",
+        "topic": "Digital & Microprocessors",
+        "options": [
+            "4 ports (Port 0, 1, 2, 3)",
+            "2 ports",
+            "8 ports",
+            "1 port"
+        ],
+        "correct": 0,
+        "exp": "The 8051 provides four 8-bit bidirectional parallel I/O ports (P_0, P_1, P_2, P_3), totaling 32 I/O pins."
+    },
+    {
+        "q": "In digital sequential circuits, a flip-flop is capable of storing how much binary information?",
+        "topic": "Digital & Microprocessors",
+        "options": [
+            "1 bit",
+            "1 byte",
+            "4 bits (1 nibble)",
+            "1 word"
+        ],
+        "correct": 0,
+        "exp": "A flip-flop is a bistable multivibrator that stores one binary digit (1 bit: 0 or 1)."
+    },
+    {
+        "q": "A Permanent Magnet Moving Coil (PMMC) instrument can be used to measure:",
+        "topic": "Measurements & Transducers",
+        "options": [
+            "Direct current (DC) only",
+            "Alternating current (AC) only",
+            "Both DC and AC",
+            "Radio frequency signals only"
+        ],
+        "correct": 0,
+        "exp": "PMMC meters rely on a permanent magnetic field. Deflection is proportional to current direction, averaging out to zero on AC. They measure DC only."
+    },
+    {
+        "q": "Moving Iron (MI) instruments produce deflecting torque proportional to the square of current (I²), which causes their scale to be:",
+        "topic": "Measurements & Transducers",
+        "options": [
+            "Non-linear and cramped at lower values",
+            "Uniform and linear throughout",
+            "Logarithmic",
+            "Exponentially expanding"
+        ],
+        "correct": 0,
+        "exp": "Because θ ∝ I², deflections are smaller at low currents and wider at high currents, resulting in a non-linear scale cramped near zero."
+    },
+    {
+        "q": "To convert a basic galvanometer with internal resistance R_m into a wide-range ammeter, one must connect:",
+        "topic": "Measurements & Transducers",
+        "options": [
+            "A very low resistance in parallel (shunt)",
+            "A very high resistance in series",
+            "A low resistance in series",
+            "A capacitor in parallel"
+        ],
+        "correct": 0,
+        "exp": "An ammeter shunt is a low-value resistor connected in parallel to divert excess line current around the meter movement."
+    },
+    {
+        "q": "A galvanometer with coil resistance R_m = 99 Ω gives full-scale deflection with 1 mA. What shunt resistance (R_sh) is required to measure up to 100 mA?",
+        "topic": "Measurements & Transducers",
+        "options": [
+            "1.0 Ω",
+            "0.99 Ω",
+            "10 Ω",
+            "0.1 Ω"
+        ],
+        "correct": 0,
+        "exp": "m = I/I_m = 100/1 = 100. R_sh = R_m / (m - 1) = 99 / (100 - 1) = 99 / 99 = 1.0 Ω."
+    },
+    {
+        "q": "To extend the range of a voltmeter, a multiplier resistor (R_se) is connected in series with the meter movement. Its value is given by:",
+        "topic": "Measurements & Transducers",
+        "options": [
+            "R_se = R_m(m - 1)",
+            "R_se = R_m / (m - 1)",
+            "R_se = R_m/m",
+            "R_se = m · R_m"
+        ],
+        "correct": 0,
+        "exp": "For a voltmeter multiplier in series, V = I_m(R_m + R_se) ⇒ R_se = R_m(m - 1), where multiplying factor m = V / V_m."
+    },
+    {
+        "q": "On a Cathode Ray Oscilloscope (CRO) screen, if equal-frequency sinusoidal voltages with a 90° phase difference are applied to the X and Y plates, the resulting Lissajous pattern is a:",
+        "topic": "Measurements & Transducers",
+        "options": [
+            "Circle (or ellipse)",
+            "Straight inclined line",
+            "Figure-of-eight (parabola)",
+            "Square wave"
+        ],
+        "correct": 0,
+        "exp": "When frequencies are identical (1:1) and phase shift is 90° (π/2), x² + y² = A², tracing a circle (or an ellipse if amplitudes differ)."
+    },
+    {
+        "q": "Which of the following is classified as an 'Active Transducer' (does not require an external electrical power supply)?",
+        "topic": "Measurements & Transducers",
+        "options": [
+            "Thermocouple",
+            "Strain Gauge",
+            "LVDT",
+            "Thermistor"
+        ],
+        "correct": 0,
+        "exp": "Thermocouples convert thermal energy directly into an output voltage (Seebeck effect) without an external excitation supply."
+    },
+    {
+        "q": "A Linear Variable Differential Transformer (LVDT) is an inductive electromechanical transducer designed to measure:",
+        "topic": "Measurements & Transducers",
+        "options": [
+            "Linear displacement",
+            "Temperature",
+            "Liquid flow rate",
+            "Luminous intensity"
+        ],
+        "correct": 0,
+        "exp": "An LVDT converts mechanical linear displacement of a movable ferromagnetic core into differential secondary AC voltages."
+    },
+    {
+        "q": "A Thermistor is a temperature-sensitive transducer that typically exhibits which property?",
+        "topic": "Measurements & Transducers",
+        "options": [
+            "A very high negative temperature coefficient of resistance",
+            "A constant positive temperature coefficient",
+            "Constant linear resistance",
+            "Zero resistance at room temperature"
+        ],
+        "correct": 0,
+        "exp": "Standard NTC thermistors show a large, non-linear drop in resistance as temperature rises, providing sensitive thermal detection."
+    },
+    {
+        "q": "Megger is a specialized electrical testing instrument used specifically for measuring:",
+        "topic": "Measurements & Transducers",
+        "options": [
+            "Very high insulation resistance",
+            "Very low cable contact resistance",
+            "AC line frequency",
+            "Magnetic field intensity"
+        ],
+        "correct": 0,
+        "exp": "Meggers generate high DC test voltages (500 V to 2.5 kV) to measure insulation resistances on the order of mega-ohms."
+    }
+];
+
+        // --- STATE MANAGEMENT ---
+        let currentIndex = 0;
+        const totalQ = questionsData.length;
+        // Status arrays: userAnswers (-1: unattempted, 0..3: option index), reviewStatus (bool), visited (bool)
+        const userAnswers = new Array(totalQ).fill(-1);
+        const reviewStatus = new Array(totalQ).fill(false);
+        const visitedStatus = new Array(totalQ).fill(false);
+
+        // Timer: 90 minutes
+        let timeLeft = 90 * 60;
+        let timerInterval = null;
+
+        // --- INITIALIZATION ---
+        window.addEventListener('DOMContentLoaded', () => {
+            buildPalette();
+            loadQuestion(0);
+            startTimer();
+        });
+
+        function startTimer() {
+            const display = document.getElementById('timerDisplay');
+            timerInterval = setInterval(() => {
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    alert('Time is up! Submitting your test automatically.');
+                    submitTest();
+                    return;
+                }
+                timeLeft--;
+                const mins = Math.floor(timeLeft / 60);
+                const secs = timeLeft % 60;
+                display.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+                if (timeLeft <= 300) {
+                    display.classList.replace('text-amber-300', 'text-rose-400');
+                }
+            }, 1000);
+        }
+
+        function buildPalette() {
+            const grid = document.getElementById('paletteGrid');
+            grid.innerHTML = '';
+            for (let i = 0; i < totalQ; i++) {
+                const btn = document.createElement('button');
+                btn.id = `palette-btn-${i}`;
+                btn.className = 'palette-btn rounded bg-slate-200 text-slate-700 hover:bg-slate-300 flex items-center justify-center transition';
+                btn.textContent = i + 1;
+                btn.onclick = () => loadQuestion(i);
+                grid.appendChild(btn);
+            }
+        }
+
+        function updatePaletteButton(idx) {
+            const btn = document.getElementById(`palette-btn-${idx}`);
+            if (!btn) return;
+            btn.className = 'palette-btn rounded flex items-center justify-center font-bold transition ';
+
+            const isAnswered = userAnswers[idx] !== -1;
+            const isReview = reviewStatus[idx];
+            const isCurrent = idx === currentIndex;
+
+            if (isCurrent) {
+                btn.classList.add('ring-2', 'ring-indigo-600', 'ring-offset-1');
+            }
+
+            if (isReview && isAnswered) {
+                btn.classList.add('bg-purple-600', 'text-white');
+            } else if (isReview) {
+                btn.classList.add('bg-amber-500', 'text-white');
+            } else if (isAnswered) {
+                btn.classList.add('bg-emerald-600', 'text-white');
+            } else if (visitedStatus[idx]) {
+                btn.classList.add('bg-rose-500', 'text-white');
+            } else {
+                btn.classList.add('bg-slate-200', 'text-slate-700');
+            }
+        }
+
+        function loadQuestion(idx) {
+            if (idx < 0 || idx >= totalQ) return;
+
+            // Update previous question state
+            visitedStatus[currentIndex] = true;
+            updatePaletteButton(currentIndex);
+
+            currentIndex = idx;
+            visitedStatus[currentIndex] = true;
+
+            const q = questionsData[idx];
+            document.getElementById('currentQNumText').textContent = idx + 1;
+            document.getElementById('topicBadge').textContent = q.topic;
+            document.getElementById('questionText').innerHTML = q.q;
+
+            // Render Options
+            const container = document.getElementById('optionsContainer');
+            container.innerHTML = '';
+            q.options.forEach((optText, oIdx) => {
+                const isChecked = userAnswers[idx] === oIdx;
+                const optDiv = document.createElement('label');
+                optDiv.className = `flex items-center p-3.5 border rounded-xl cursor-pointer transition select-none ${isChecked ? 'bg-indigo-50 border-indigo-600 text-indigo-900 font-semibold shadow-sm' : 'border-slate-200 hover:bg-slate-50 text-slate-700'
+                    }`;
+                optDiv.innerHTML = `
+          <input type="radio" name="opt" value="${oIdx}" ${isChecked ? 'checked' : ''} class="w-4 h-4 text-indigo-600 focus:ring-indigo-500 mr-3.5">
+          <span class="text-sm md:text-base">${optText}</span>
+        `;
+                optDiv.onclick = () => selectOption(oIdx);
+                container.appendChild(optDiv);
+            });
+
+            // Update review button label
+            const rBtn = document.getElementById('reviewBtn');
+            if (reviewStatus[idx]) {
+                rBtn.className = 'px-4 py-2 bg-amber-500 text-white font-medium rounded-lg text-sm transition';
+                rBtn.textContent = 'Unmark Review';
+            } else {
+                rBtn.className = 'px-4 py-2 border border-amber-500 text-amber-700 hover:bg-amber-50 font-medium rounded-lg text-sm transition';
+                rBtn.textContent = 'Mark for Review';
+            }
+
+            updatePaletteButton(currentIndex);
+
+            
+        }
+
+        function selectOption(oIdx) {
+            userAnswers[currentIndex] = oIdx;
+            loadQuestion(currentIndex);
+        }
+
+        function clearResponse() {
+            userAnswers[currentIndex] = -1;
+            loadQuestion(currentIndex);
+        }
+
+        function toggleMarkForReview() {
+            reviewStatus[currentIndex] = !reviewStatus[currentIndex];
+            loadQuestion(currentIndex);
+        }
+
+        function saveAndNext() {
+            if (currentIndex < totalQ - 1) {
+                loadQuestion(currentIndex + 1);
+            } else {
+                alert("You are on the last question. Click 'Submit Test' when you're finished.");
+            }
+        }
+
+        function prevQuestion() {
+            if (currentIndex > 0) {
+                loadQuestion(currentIndex - 1);
+            }
+        }
+
+        function jumpToSection(val) {
+            loadQuestion(parseInt(val, 10));
+        }
+
+        // --- TEST EVALUATION & RESULTS ---
+        function confirmSubmit() {
+            let answeredCount = userAnswers.filter(a => a !== -1).length;
+            let confirmMsg = `Are you sure you want to finish the test?\n\n• Answered: ${answeredCount}\n• Unanswered: ${totalQ - answeredCount}\n• Total Time Remaining: ${document.getElementById('timerDisplay').textContent}`;
+            if (confirm(confirmMsg)) {
+                submitTest();
+            }
+        }
+
+        function submitTest() {
+            clearInterval(timerInterval);
+
+            let correct = 0;
+            let incorrect = 0;
+            let unattempted = 0;
+
+            // Sectional trackers
+            const topicStats = {};
+
+            questionsData.forEach((q, idx) => {
+                if (!topicStats[q.topic]) {
+                    topicStats[q.topic] = { total: 0, attempted: 0, correct: 0, incorrect: 0, score: 0 };
+                }
+                topicStats[q.topic].total++;
+
+                const userAns = userAnswers[idx];
+                if (userAns === -1) {
+                    unattempted++;
+                } else if (userAns === q.correct) {
+                    correct++;
+                    topicStats[q.topic].attempted++;
+                    topicStats[q.topic].correct++;
+                    topicStats[q.topic].score += 1.0;
+                } else {
+                    incorrect++;
+                    topicStats[q.topic].attempted++;
+                    topicStats[q.topic].incorrect++;
+                    topicStats[q.topic].score -= (1 / 3);
+                }
+            });
+
+            const netScore = Math.max(0, (correct * 1.0) - (incorrect * (1 / 3)));
+            const accuracy = (correct + incorrect) > 0 ? ((correct / (correct + incorrect)) * 100).toFixed(1) : 0;
+
+            // Fill result card
+            document.getElementById('resScore').textContent = netScore.toFixed(2);
+            document.getElementById('resCorrect').textContent = correct;
+            document.getElementById('resIncorrect').textContent = incorrect;
+            document.getElementById('resAccuracy').textContent = `${accuracy}%`;
+
+            // Fill Sectional Breakdown
+            const sBody = document.getElementById('sectionalBreakupBody');
+            sBody.innerHTML = '';
+            for (const [topic, s] of Object.entries(topicStats)) {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+          <td class="p-2.5 font-semibold text-slate-800">${topic}</td>
+          <td class="p-2.5 text-center">${s.total}</td>
+          <td class="p-2.5 text-center">${s.attempted}</td>
+          <td class="p-2.5 text-center font-bold text-emerald-600">${s.correct}</td>
+          <td class="p-2.5 text-center font-bold text-rose-600">${s.incorrect}</td>
+          <td class="p-2.5 text-right font-black ${s.score >= 0 ? 'text-indigo-900' : 'text-rose-600'}">${s.score.toFixed(2)}</td>
+        `;
+                sBody.appendChild(row);
+            }
+
+            // Fill Solutions Review
+            const solContainer = document.getElementById('solutionsReviewContainer');
+            solContainer.innerHTML = '';
+            questionsData.forEach((q, idx) => {
+                const uAns = userAnswers[idx];
+                const isRight = uAns === q.correct;
+                const isSkipped = uAns === -1;
+
+                let statusClass = 'border-slate-200 bg-white';
+                let badge = '<span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-semibold">Unattempted (0)</span>';
+                if (!isSkipped) {
+                    if (isRight) {
+                        statusClass = 'border-emerald-200 bg-emerald-50/30';
+                        badge = '<span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold">Correct (+1.0)</span>';
+                    } else {
+                        statusClass = 'border-rose-200 bg-rose-50/30';
+                        badge = '<span class="text-xs bg-rose-100 text-rose-800 px-2 py-0.5 rounded font-bold">Wrong (-0.33)</span>';
+                    }
+                }
+
+                const div = document.createElement('div');
+                div.className = `border rounded-xl p-4 text-xs md:text-sm ${statusClass}`;
+                div.innerHTML = `
+          <div class="flex justify-between items-start mb-2">
+            <span class="font-bold text-slate-700">Q${idx + 1}. [${q.topic}]</span>
+            ${badge}
+          </div>
+          <div class="font-medium text-slate-800 mb-2">${q.q}</div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 mb-3 text-slate-600">
+            ${q.options.map((opt, oIdx) => {
+                    let optStyle = 'border-slate-200 bg-white';
+                    if (oIdx === q.correct) optStyle = 'border-emerald-500 bg-emerald-100/60 font-bold text-emerald-900';
+                    if (!isSkipped && oIdx === uAns && !isRight) optStyle = 'border-rose-500 bg-rose-100 text-rose-900 font-bold';
+                    return `<div class="p-2 border rounded-lg ${optStyle}">Option ${oIdx + 1}:${opt}</div>`;
+                }).join('')}
+          </div>
+          <div class="p-2.5 bg-slate-100 rounded-lg text-slate-700 text-xs">
+            <strong class="text-indigo-900">Explanation:</strong> ${q.exp}
+          </div>
+        `;
+                solContainer.appendChild(div);
+            });
+
+            document.getElementById('resultModal').classList.remove('hidden');
+
+            
+        }
+
+        function closeResultModal() {
+            document.getElementById('resultModal').classList.add('hidden');
+        }
+
+        function restartTest() {
+            if (confirm('Restarting will clear all your answers. Do you want to continue?')) {
+                userAnswers.fill(-1);
+                reviewStatus.fill(false);
+                visitedStatus.fill(false);
+                timeLeft = 90 * 60;
+                closeResultModal();
+                loadQuestion(0);
+                buildPalette();
+                startTimer();
+            }
+        }
+    </script>
+</body>
+
+</html>

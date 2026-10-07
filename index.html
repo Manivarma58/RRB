@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RRB Technician Grade-I (Signal) — 4-in-1 CBT Mega Mock Hub</title>
+  <meta name="description" content="All four comprehensive 100-question mock tests for RRB Technician Grade-I (Signal): Basic Science & Engineering, Computers, Mathematics, and General Awareness & Reasoning with real TCS iON CBT exam simulation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top App Navigation Bar -->
+  <header class="app-header">
+    <div class="brand-wrapper">
+      <div class="brand-badge">RRB CBT</div>
+      <div class="brand-info">
+        <h1>RRB Technician Gr-I (Signal) <span style="font-size:12px;opacity:0.75;font-weight:500;">· 400 Qs Mega Hub</span></h1>
+        <div class="tagline">Pay Level-5 Examination · Official Pattern (+1.0 / -0.33)</div>
+      </div>
+    </div>
+
+    <div class="header-center">
+      <div class="timer-box" id="timerBox">
+        <span class="timer-label">Time Remaining</span>
+        <span class="timer-val" id="timerVal">90:00</span>
+      </div>
+      <button id="btnSubmitTop" class="btn-submit-top" title="Submit active test and get scorecard">
+        Submit Test
+      </button>
+    </div>
+
+    <div class="header-controls">
+      <button class="btn-icon" id="btnInstructions" title="Exam Instructions & Marking Scheme">📋</button>
+      <button class="btn-icon" id="btnSound" title="Toggle Sound Feedback">🔊</button>
+      <button class="btn-icon" id="btnTheme" title="Toggle Dark/Light Mode">🌙</button>
+      <button class="btn-icon" id="btnFullscreen" title="Toggle Fullscreen Mode">⛶</button>
+    </div>
+  </header>
+
+  <!-- 4-in-1 Test Selector Tab Bar -->
+  <nav class="test-tabs-bar">
+    <div class="tabs-group" id="testTabsList">
+      <!-- 4 Test buttons rendered by app.js -->
+    </div>
+    <div class="hub-actions">
+      <button class="btn-hub-view" id="btnViewTest">📝 Exam View</button>
+      <button class="btn-hub-view" id="btnViewHub">📊 4-in-1 Hub</button>
+    </div>
+  </nav>
+
+  <!-- Main View Area -->
+  <main class="main-wrapper">
+
+    <!-- VIEW 1: CBT Real Exam Interface -->
+    <div class="cbt-container" id="cbtContainer">
+
+      <!-- Left: Active Question Card -->
+      <section class="question-panel">
+        <div class="q-meta-header">
+          <div class="meta-left">
+            <span class="badge-topic" id="qTopicBadge">Physics Fundamentals</span>
+            <span class="marks-scheme">Marks: <span class="plus">+1.0</span> | Negative: <span class="minus">-0.33</span></span>
+          </div>
+          <div class="meta-right">
+            <span class="q-number-pill">Question <strong id="qCurrentNum">1</strong> of <span id="qTotalNum">100</span></span>
+          </div>
+        </div>
+
+        <div class="q-body">
+          <div class="q-text" id="questionText">Loading question content...</div>
+          <div class="options-list" id="optionsContainer">
+            <!-- 4 Options rendered by app.js -->
+          </div>
+        </div>
+
+        <div class="q-footer-actions">
+          <div class="btn-group-left">
+            <button class="btn-action btn-prev" id="btnPrev">← Previous</button>
+            <button class="btn-action btn-clear" id="btnClear">Clear Response</button>
+            <button class="btn-action btn-review" id="btnReview">★ Mark for Review</button>
+          </div>
+          <div class="btn-group-right">
+            <button class="btn-action btn-save-next" id="btnSaveNext">Save & Next →</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right: Question Palette & Navigation -->
+      <aside class="palette-panel">
+        <div class="palette-panel-header">
+          <h2 class="panel-title">Question Palette</h2>
+        </div>
+
+        <!-- Status Legend & Live Counters -->
+        <div class="legend-grid">
+          <div class="legend-item">
+            <span class="legend-chip ans" id="cntAns">0</span>
+            <span>Answered</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-chip notans" id="cntNotAns">0</span>
+            <span>Not Answered</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-chip review" id="cntReview">0</span>
+            <span>Review</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-chip ansreview" id="cntAnsReview">0</span>
+            <span>Ans + Review</span>
+          </div>
+          <div class="legend-item" style="grid-column: span 2;">
+            <span class="legend-chip notvisited" id="cntNotVisited">100</span>
+            <span>Not Visited</span>
+          </div>
+        </div>
+
+        <!-- Section / Topic Quick Jump Dropdown -->
+        <div class="section-filter-wrapper">
+          <select id="sectionFilterSelect" title="Jump to syllabus topic">
+            <option value="-1">All Topics (1 - 100)</option>
+          </select>
+        </div>
+
+        <!-- 100 Question Buttons Grid -->
+        <div class="palette-scroll">
+          <div class="palette-grid" id="paletteGrid">
+            <!-- 100 question buttons generated dynamically -->
+          </div>
+        </div>
+
+        <div class="palette-footer">
+          <button class="btn-submit-final" id="btnSubmitPalette">Submit Final Test</button>
+        </div>
+      </aside>
+    </div>
+
+    <!-- VIEW 2: 4-in-1 Hub Dashboard Overview -->
+    <div class="hub-view-container" id="hubViewContainer" style="display: none;">
+      <section class="hub-hero">
+        <div class="hero-text">
+          <h2>RRB Technician Grade-I (Signal) 4-in-1 CBT Portal</h2>
+          <p>Complete all four specialized 100-question mock tests covering the full syllabus according to CEN 02/2024. Switch between subjects seamlessly, track independent scores, and review detailed step-by-step explanations.</p>
+          <div class="hero-stats-row">
+            <div class="hero-stat-pill">📚 4 Mock Tests (400 Total Qs)</div>
+            <div class="hero-stat-pill">⏱ 90 Mins Per Test</div>
+            <div class="hero-stat-pill">🎯 Official Marking (+1 / -0.33)</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4 Test Cards Grid -->
+      <section class="tests-cards-grid" id="testsCardsGrid">
+        <!-- 4 Test cards rendered by app.js -->
+      </section>
+    </div>
+
+  </main>
+
+  <!-- MODAL: Confirmation Before Final Submission -->
+  <div class="modal-backdrop" id="submitConfirmModal">
+    <div class="modal-card" style="max-width: 520px;">
+      <div class="modal-header">
+        <div>
+          <h2>Submit Mock Test?</h2>
+          <p>Please review your test attempt summary before finalizing</p>
+        </div>
+        <button class="modal-close-btn" onclick="app.closeSubmitConfirmModal()">&times;</button>
+      </div>
+      <div class="modal-body" style="gap: 16px;">
+        <div class="score-summary-grid" style="grid-template-columns: repeat(2, 1fr);">
+          <div class="score-tile">
+            <div class="tile-label">Total Questions</div>
+            <div class="tile-value" id="modalTotalQ">100</div>
+          </div>
+          <div class="score-tile correct">
+            <div class="tile-label">Answered</div>
+            <div class="tile-value" id="modalAnsQ">0</div>
+          </div>
+          <div class="score-tile wrong">
+            <div class="tile-label">Unanswered / Skipped</div>
+            <div class="tile-value" id="modalNotAnsQ">100</div>
+          </div>
+          <div class="score-tile" style="border-color: var(--warning);">
+            <div class="tile-label">Marked for Review</div>
+            <div class="tile-value" id="modalReviewQ" style="color: var(--warning);">0</div>
+          </div>
+        </div>
+        <div style="background: var(--warning-light); border: 1px solid var(--warning); border-radius: var(--radius-md); padding: 12px; font-size: 13px; color: var(--warning-hover);">
+          ⚠️ Once submitted, you cannot change your answers. Your net marks and diagnostic analytics will be generated immediately.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-action btn-prev" onclick="app.closeSubmitConfirmModal()">Return to Test</button>
+        <button class="btn-submit-top" onclick="app.confirmFinalSubmit()">Yes, Confirm Submission</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Scorecard & Solutions Review -->
+  <div class="modal-backdrop" id="scorecardModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <h2 id="scorecardTestTitle">Mock Test Scorecard & Analytics</h2>
+          <p>RRB Technician Grade-I (Signal) Evaluation · Normalized Pattern</p>
+        </div>
+        <button class="modal-close-btn" onclick="app.closeScorecard()">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- 5 Key Metrics -->
+        <div class="score-summary-grid">
+          <div class="score-tile highlight">
+            <div class="tile-label">Net Score</div>
+            <div class="tile-value" id="scoreNet">0.00</div>
+            <div class="tile-sub">out of 100.0</div>
+          </div>
+          <div class="score-tile correct">
+            <div class="tile-label">Correct (+1)</div>
+            <div class="tile-value" id="scoreCorrect">0</div>
+            <div class="tile-sub">positive marks</div>
+          </div>
+          <div class="score-tile wrong">
+            <div class="tile-label">Incorrect (-0.33)</div>
+            <div class="tile-value" id="scoreIncorrect">0</div>
+            <div class="tile-sub">penalty marks</div>
+          </div>
+          <div class="score-tile">
+            <div class="tile-label">Accuracy</div>
+            <div class="tile-value" id="scoreAccuracy">0%</div>
+            <div class="tile-sub">attempt efficiency</div>
+          </div>
+          <div class="score-tile">
+            <div class="tile-label">Unattempted</div>
+            <div class="tile-value" id="scoreUnattempted">0</div>
+            <div class="tile-sub">0 penalty</div>
+          </div>
+        </div>
+
+        <!-- Topic Breakdown Table -->
+        <div>
+          <h3 style="font-size: 15px; font-weight: 700; margin-bottom: 10px;">Topic-Wise Performance Breakdown</h3>
+          <div class="diagnostics-table-wrap">
+            <table class="diag-table">
+              <thead>
+                <tr>
+                  <th>Topic Area</th>
+                  <th>Questions</th>
+                  <th>Attempted</th>
+                  <th>Correct</th>
+                  <th>Accuracy</th>
+                  <th>Net Marks</th>
+                </tr>
+              </thead>
+              <tbody id="diagTableBody">
+                <!-- Rows populated by app.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Solutions & Rationales Explorer -->
+        <div>
+          <div class="solutions-section-header">
+            <h3 style="font-size: 15px; font-weight: 700;">Question Solutions & Step-by-Step Rationales</h3>
+            <div class="review-filter-chips">
+              <button class="r-chip active" data-filter="all" onclick="app.setSolutionFilter('all')">All (100)</button>
+              <button class="r-chip" data-filter="correct" onclick="app.setSolutionFilter('correct')">Correct</button>
+              <button class="r-chip" data-filter="wrong" onclick="app.setSolutionFilter('wrong')">Incorrect</button>
+              <button class="r-chip" data-filter="skipped" onclick="app.setSolutionFilter('skipped')">Unattempted</button>
+            </div>
+          </div>
+
+          <div class="solution-cards-container" id="solutionsListContainer" style="margin-top: 14px;">
+            <!-- Rendered by app.js -->
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <div style="display:flex;gap:8px;">
+          <button class="btn-action btn-prev" onclick="app.restartActiveTest()">🔄 Retake Test</button>
+          <button class="btn-action btn-prev" onclick="app.printScorecard()">🖨️ Print / Save PDF</button>
+        </div>
+        <button class="btn-submit-top" onclick="app.closeScorecard()">Back to Test Portal</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Exam Instructions & Rules -->
+  <div class="modal-backdrop" id="instructionsModal">
+    <div class="modal-card" style="max-width: 680px;">
+      <div class="modal-header">
+        <div>
+          <h2>Exam Instructions & Marking Guidelines</h2>
+          <p>RRB Technician Grade-I (Signal) Computer Based Test (CBT)</p>
+        </div>
+        <button class="modal-close-btn" onclick="document.getElementById('instructionsModal').classList.remove('active')">&times;</button>
+      </div>
+      <div class="modal-body" style="font-size: 14px; line-height: 1.6; gap: 16px;">
+        <div>
+          <h4 style="font-weight:700;margin-bottom:6px;">1. General Instructions:</h4>
+          <ul style="padding-left: 20px; color: var(--text-muted); space-y: 4px;">
+            <li>Each of the 4 mock tests contains exactly <strong>100 Multiple Choice Questions (MCQs)</strong>.</li>
+            <li>Total duration allowed for each individual mock test is <strong>90 minutes (5400 seconds)</strong>.</li>
+            <li>The countdown timer in the top header indicates remaining time. When timer reaches 00:00, the test will be submitted automatically.</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-weight:700;margin-bottom:6px;">2. Marking Scheme (Official RRB Rules):</h4>
+          <ul style="padding-left: 20px; color: var(--text-muted);">
+            <li><strong>+1.0 Mark</strong> for every correct answer.</li>
+            <li><strong>-0.33 Mark (1/3rd penalty)</strong> for every incorrect answer.</li>
+            <li><strong>0.0 Mark (No penalty)</strong> for questions left unattempted.</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-weight:700;margin-bottom:6px;">3. Question Palette Colors:</h4>
+          <ul style="padding-left: 20px; color: var(--text-muted);">
+            <li><strong style="color:var(--status-ans)">Green:</strong> Question answered and saved.</li>
+            <li><strong style="color:var(--status-notans)">Red:</strong> Question visited but not answered.</li>
+            <li><strong style="color:var(--status-review)">Yellow / Orange:</strong> Marked for Review (not answered).</li>
+            <li><strong style="color:var(--status-ansreview)">Purple with Check:</strong> Answered and Marked for Review.</li>
+            <li><strong>Gray:</strong> Question not yet visited.</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-weight:700;margin-bottom:6px;">4. Keyboard Shortcuts:</h4>
+          <p style="color: var(--text-muted);">Press <strong>1, 2, 3, 4</strong> (or <strong>A, B, C, D</strong>) to select options quickly · <strong>Alt + N</strong> for Save & Next · <strong>Alt + P</strong> for Previous · <strong>Alt + M</strong> for Mark for Review.</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div></div>
+        <button class="btn-submit-top" onclick="document.getElementById('instructionsModal').classList.remove('active')">Got It, Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

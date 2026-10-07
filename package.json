@@ -1,0 +1,19 @@
+{
+  "name": "rrb-technician-grade1-cbt",
+  "version": "1.0.0",
+  "description": "RRB Technician Grade-I (Signal) Unified 4-in-1 CBT Mega Mock Hub",
+  "scripts": {
+    "dev": "npx serve -l 3000 .",
+    "start": "npx serve -l 3000 .",
+    "build": "echo 'Static build ready'"
+  },
+  "keywords": [
+    "rrb",
+    "cbt",
+    "mock-test",
+    "technician-grade-1",
+    "railway"
+  ],
+  "author": "Mani Varma",
+  "license": "MIT"
+}
